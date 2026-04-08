@@ -1,0 +1,811 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="الموقع الرسمي للمهندس محمد يوسف - مهندس حاسوب ومطور مواقع متخصص في الأمان السيبراني والحلول الرقمية المبتكرة.">
+    <title>محمد يوسف | التميز في هندسة الحاسوب وتطوير الويب</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Cairo & Changa & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Changa:wght@500;700&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons (via CDN) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --secondary: #64748b;
+            --accent: #3b82f6;
+            --bg-light: #f8fafc;
+            --glass: rgba(255, 255, 255, 0.75);
+            --whatsapp: #25D366;
+            --linkedin: #0077B5;
+            --email: #EA4335;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--bg-light);
+            color: #0f172a;
+            overflow-x: hidden;
+            transition: background-color 0.3s;
+        }
+
+        body.en {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .font-heading { font-family: 'Changa', sans-serif; }
+        body.en .font-heading { font-family: 'Inter', sans-serif; }
+
+        /* Glassmorphism Effect */
+        .glass-nav {
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Custom Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Card Hover Effects */
+        .hover-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .hover-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        /* Progress Bar Animation */
+        .progress-bar {
+            width: 0;
+            transition: width 1.5s cubic-bezier(0.65, 0, 0.35, 1);
+        }
+
+        /* Gradient Text */
+        .text-gradient {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-link-active {
+            color: var(--primary) !important;
+            font-weight: 700 !important;
+        }
+        
+        #mobile-menu {
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            z-index: 10000 !important;
+        }
+        
+        /* RTL/LTR Switch Support with Specificity Fix */
+        html[dir="rtl"] #mobile-menu:not(.open) { transform: translateX(100%); }
+        html[dir="ltr"] #mobile-menu:not(.open) { transform: translateX(-100%); }
+        
+        #mobile-menu.open {
+            transform: translateX(0) !important;
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+        
+        .no-scroll {
+            overflow: hidden;
+        }
+
+        /* Iframe Container Responsive */
+        .iframe-container {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            overflow: hidden;
+            border-radius: 1.5rem;
+            background: #e2e8f0;
+        }
+        .iframe-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Social Icon Hover */
+        .social-btn {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .social-btn:hover {
+            transform: translateY(-3px) scale(1.1);
+        }
+        .btn-whatsapp:hover { color: var(--whatsapp); }
+        .btn-linkedin:hover { color: var(--linkedin); }
+        .btn-email:hover { color: var(--email); }
+
+        /* Language Switcher Button */
+        .lang-switch {
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            border-radius: 0.75rem;
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary);
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+        .lang-switch:hover {
+            background: var(--primary);
+            color: white;
+        }
+    </style>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                        dark: '#0f172a',
+                        whatsapp: '#25D366',
+                        linkedin: '#0077B5',
+                        email: '#EA4335',
+                    },
+                    borderRadius: {
+                        '4xl': '2rem',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="antialiased">
+
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 py-6">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="#" class="text-2xl font-black font-heading tracking-tighter text-dark group">
+                <span class="text-primary group-hover:text-blue-700 transition" data-i18n="nav-name">محمد</span> <span data-i18n="nav-surname">يوسف</span>
+            </a>
+            
+            <!-- Desktop Links -->
+            <div class="hidden md:flex items-center space-x-reverse space-x-8 rtl:space-x-reverse ltr:space-x-8">
+                <a href="#about" class="nav-item text-sm font-bold text-slate-600 hover:text-primary transition-colors relative group" data-i18n="nav-about">عني</a>
+                <a href="#services" class="nav-item text-sm font-bold text-slate-600 hover:text-primary transition-colors relative group" data-i18n="nav-services">الخدمات</a>
+                <a href="#projects" class="nav-item text-sm font-bold text-slate-600 hover:text-primary transition-colors relative group" data-i18n="nav-projects">المشاريع</a>
+                <a href="#skills" class="nav-item text-sm font-bold text-slate-600 hover:text-primary transition-colors relative group" data-i18n="nav-skills">المهارات</a>
+                
+                <!-- Language Switcher -->
+                <button onclick="toggleLanguage()" class="lang-switch text-sm" id="lang-toggle">EN</button>
+
+                <!-- Social & Contact Icons in Navbar -->
+                <div class="flex items-center space-x-reverse space-x-4 rtl:space-x-reverse ltr:space-x-4">
+                    <a href="https://wa.me/+905013584744" target="_blank" class="social-btn btn-whatsapp text-slate-400" title="واتساب">
+                        <i data-lucide="message-circle" class="w-6 h-6"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/muhammed-youssef-6a86b6248" target="_blank" class="social-btn btn-linkedin text-slate-400" title="لينكد إن">
+                        <i data-lucide="linkedin" class="w-6 h-6"></i>
+                    </a>
+                    <a href="mailto:contact@muhammedyusuf.com" class="social-btn btn-email text-slate-400" title="بريد إلكتروني">
+                        <i data-lucide="mail" class="w-6 h-6"></i>
+                    </a>
+                    <a href="#contact" class="bg-primary text-white px-6 py-2.5 rounded-xl font-bold hover:bg-blue-700 transition shadow-lg shadow-blue-200" data-i18n="nav-contact">
+                        تواصل معي
+                    </a>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="menu-btn" class="md:hidden text-dark focus:outline-none" type="button" aria-label="فتح القائمة">
+                <i data-lucide="menu" class="w-8 h-8"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu (Moved outside nav to body) -->
+    <div id="mobile-menu" class="fixed inset-0 bg-white flex flex-col items-center justify-center space-y-8 md:hidden">
+        <button id="close-btn" class="absolute top-8 right-8 text-dark" type="button" aria-label="إغلاق القائمة">
+            <i data-lucide="x" class="w-10 h-10"></i>
+        </button>
+        <a href="#about" class="mobile-nav-link text-3xl font-bold" data-i18n="nav-about">عني</a>
+        <a href="#services" class="mobile-nav-link text-3xl font-bold" data-i18n="nav-services">الخدمات</a>
+        <a href="#projects" class="mobile-nav-link text-3xl font-bold" data-i18n="nav-projects">المشاريع</a>
+        <a href="#skills" class="mobile-nav-link text-3xl font-bold" data-i18n="nav-skills">المهارات</a>
+        <a href="#contact" class="mobile-nav-link text-3xl font-bold text-primary" data-i18n="nav-contact">تواصل معي</a>
+        
+        <button onclick="toggleLanguage()" class="lang-switch text-xl" id="lang-toggle-mobile">EN</button>
+
+        <div class="flex gap-8 pt-6">
+            <a href="https://wa.me/+905013584744" target="_blank" class="text-whatsapp">
+                <i data-lucide="message-circle" class="w-10 h-10"></i>
+            </a>
+            <a href="https://linkedin.com/in/muhammed-youssef-6a86b6248" target="_blank" class="text-linkedin">
+                <i data-lucide="linkedin" class="w-10 h-10"></i>
+            </a>
+            <a href="mailto:contact@muhammedyusuf.com" class="text-email">
+                <i data-lucide="mail" class="w-10 h-10"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="about" class="min-h-screen flex items-center pt-20 bg-gradient-to-br from-slate-50 via-white to-blue-50">
+        <div class="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div class="order-2 lg:order-1 text-center lg:text-right ltr:lg:text-left space-y-8 animate-fade-in-up">
+                <div class="inline-flex items-center space-x-reverse space-x-3 ltr:space-x-3 bg-blue-100/50 text-primary px-4 py-2 rounded-full text-sm font-bold">
+                    <span class="relative flex h-3 w-3">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
+                    </span>
+                    <span data-i18n="hero-badge">متاح لمشاريع جديدة لعام 2026</span>
+                </div>
+                <h1 class="text-5xl md:text-7xl font-black font-heading leading-tight text-dark">
+                    <span data-i18n="hero-name">محمد يوسف</span> <br>
+                    <span class="text-gradient" data-i18n="hero-title">مهندس حاسوب | مطور مواقع</span>
+                </h1>
+                <p class="text-xl text-slate-500 leading-relaxed max-w-2xl mx-auto lg:mx-0" data-i18n="hero-desc">
+                    مرحباً! أنا محمد يوسف، مهندس حاسوب متخصص في تطوير تطبيقات الويب والتطبيقات الذكية. أجمع بين هندسة النظم وتطوير الويب لتقديم حلول رقمية آمنة، سريعة، وجميلة. شغفي هو تحويل الأفكار المعقدة إلى واقع ملموس.
+                </p>
+                <div class="flex flex-wrap gap-5 justify-center lg:justify-start">
+                    <a href="#projects" class="group flex items-center space-x-reverse space-x-3 ltr:space-x-3 bg-dark text-white px-10 py-4 rounded-2xl font-bold hover:bg-slate-800 transition shadow-2xl">
+                        <span data-i18n="hero-btn-work">استعرض أعمالي</span>
+                        <i data-lucide="arrow-left" class="w-5 h-5 group-hover:translate-x-[-5px] ltr:group-hover:translate-x-[5px] ltr:rotate-180 ltr:inline-block hidden transition-transform"></i>
+                        <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-[5px] ltr:hidden transition-transform"></i>
+                    </a>
+                    <a href="#contact" class="flex items-center space-x-reverse space-x-3 ltr:space-x-3 bg-white border-2 border-slate-200 text-dark px-10 py-4 rounded-2xl font-bold hover:border-primary hover:text-primary transition">
+                        <span data-i18n="hero-btn-talk">دعنا نتحدث</span>
+                        <i data-lucide="message-circle" class="w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="order-1 lg:order-2 flex justify-center relative animate-fade-in-up" style="animation-delay: 0.2s;">
+                <div class="relative z-10 group">
+                    <div class="absolute -inset-4 bg-gradient-to-tr from-primary to-blue-400 rounded-[3rem] blur-2xl opacity-20 group-hover:opacity-30 transition duration-500"></div>
+                    <div class="w-72 h-72 md:w-96 md:h-96 bg-white rounded-[3rem] overflow-hidden border-[12px] border-white shadow-2xl relative">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80" alt="محمد يوسف" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-700">
+                    </div>
+                    <!-- Stats Floating Card -->
+                    <div class="absolute -bottom-6 -right-6 md:-right-10 ltr:-left-6 md:ltr:-left-10 bg-white p-6 rounded-3xl shadow-2xl border border-slate-100 reveal">
+                        <div class="flex items-center space-x-reverse space-x-4 ltr:space-x-4">
+                            <div class="w-12 h-12 bg-green-100 text-green-600 rounded-2xl flex items-center justify-center">
+                                <i data-lucide="check-circle" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-black text-dark">+50</div>
+                                <div class="text-xs font-bold text-slate-400" data-i18n="stat-projects">مشروع مكتمل</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-32 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-3xl mx-auto text-center mb-20 reveal">
+                <h2 class="text-primary font-bold tracking-widest uppercase text-sm mb-4" data-i18n="services-badge">خدماتي التقنية</h2>
+                <h3 class="text-4xl md:text-5xl font-black font-heading text-dark mb-6" data-i18n="services-title">ماذا أقدم لعملائي؟</h3>
+                <p class="text-lg text-slate-500" data-i18n="services-desc">حلول متكاملة تبدأ من الفكرة وتستمر حتى الإطلاق، مع التركيز على أعلى معايير الجودة والأمان.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-slate-50 p-10 rounded-[2.5rem] hover-card border border-slate-100 group reveal">
+                    <div class="w-16 h-16 bg-blue-100 text-primary rounded-2xl flex items-center justify-center mb-8 group-hover:bg-primary group-hover:text-white transition-colors duration-500">
+                        <i data-lucide="layout" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-4" data-i18n="service-1-title">تطوير مواقع الويب</h4>
+                    <p class="text-slate-500 leading-relaxed" data-i18n="service-1-desc">بناء مواقع ويب احترافية وسريعة باستخدام أحدث التقنيات لضمان تجربة مستخدم ممتازة.</p>
+                </div>
+                <!-- Service 2 -->
+                <div class="bg-slate-50 p-10 rounded-[2.5rem] hover-card border border-slate-100 group reveal" style="transition-delay: 0.1s;">
+                    <div class="w-16 h-16 bg-red-100 text-red-600 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-red-600 group-hover:text-white transition-colors duration-500">
+                        <i data-lucide="shield-check" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-4" data-i18n="service-2-title">حماية النظم</h4>
+                    <p class="text-slate-500 leading-relaxed" data-i18n="service-2-desc">تقديم استشارات أمان شاملة وحلول حماية متقدمة لضمان سلامة بياناتك وأنظمتك.</p>
+                </div>
+                <!-- Service 3 -->
+                <div class="bg-slate-50 p-10 rounded-[2.5rem] hover-card border border-slate-100 group reveal" style="transition-delay: 0.2s;">
+                    <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-emerald-600 group-hover:text-white transition-colors duration-500">
+                        <i data-lucide="smartphone" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-4" data-i18n="service-3-title">تطوير التطبيقات</h4>
+                    <p class="text-slate-500 leading-relaxed" data-i18n="service-3-desc">تطوير تطبيقات ذكية وسهلة الاستخدام تلبي احتياجاتك الرقمية والإنتاجية.</p>
+                </div>
+                <!-- Service 4 -->
+                <div class="bg-slate-50 p-10 rounded-[2.5rem] hover-card border border-slate-100 group reveal" style="transition-delay: 0.3s;">
+                    <div class="w-16 h-16 bg-purple-100 text-purple-600 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-purple-600 group-hover:text-white transition-colors duration-500">
+                        <i data-lucide="zap" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-4" data-i18n="service-4-title">تحسين الأداء</h4>
+                    <p class="text-slate-500 leading-relaxed" data-i18n="service-4-desc">تحسين سرعة وأداء المواقع والتطبيقات لتجربة مستخدم سلسة وخالية من التأخير.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-32 bg-slate-50">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 reveal">
+                <div class="max-w-2xl text-right ltr:text-left">
+                    <h2 class="text-primary font-bold tracking-widest uppercase text-sm mb-4" data-i18n="projects-badge">معرض الأعمال</h2>
+                    <h3 class="text-4xl md:text-5xl font-black font-heading text-dark" data-i18n="projects-title">مشاريع تقنية مبتكرة</h3>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Project 1 -->
+                <div class="bg-white rounded-[3rem] overflow-hidden shadow-sm border border-slate-100 hover-card group reveal flex flex-col">
+                    <div class="p-6 flex-grow">
+                        <div class="iframe-container shadow-xl border border-slate-200 mb-8">
+                            <iframe src="https://rikazalelim.com" title="منصة الركاز التعليمية" loading="lazy"></iframe>
+                        </div>
+                        <div class="flex items-center justify-between mb-4">
+                            <h4 class="text-2xl font-black text-dark" data-i18n="project-1-title">منصة الركاز التعليمية</h4>
+                            <span class="text-slate-400 text-sm font-bold">Full Stack Platform</span>
+                        </div>
+                        <p class="text-slate-500 leading-relaxed mb-8" data-i18n="project-1-desc">منصة تعليمية متكاملة لإدارة الدورات والمستخدمين والمحتوى، مع لوحة تحكم ديناميكية ونظام إدارة متكامل باستخدام Node.js وقاعدة بيانات.</p>
+                        <div class="flex flex-wrap gap-3 mb-8">
+                            <span class="text-xs font-bold text-slate-600 bg-slate-100 px-3 py-1.5 rounded-lg">Node.js</span>
+                            <span class="text-xs font-bold text-slate-600 bg-slate-100 px-3 py-1.5 rounded-lg">Database</span>
+                            <span class="text-xs font-bold text-slate-600 bg-slate-100 px-3 py-1.5 rounded-lg">Dashboard</span>
+                        </div>
+                    </div>
+                    <div class="p-6 bg-slate-50 border-t border-slate-100 flex justify-between items-center">
+                        <a href="https://rikazalelim.com" target="_blank" class="text-primary font-bold flex items-center gap-2 hover:gap-3 transition-all">
+                            <span data-i18n="project-btn-open">فتح المشروع</span>
+                            <i data-lucide="external-link" class="w-4 h-4"></i>
+                        </a>
+                        <a href="#" class="text-slate-400 hover:text-dark transition">
+                            <i data-lucide="github" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="bg-white rounded-[3rem] overflow-hidden shadow-sm border border-slate-100 hover-card group reveal flex flex-col" style="transition-delay: 0.1s;">
+                    <div class="p-6 flex-grow">
+                        <div class="iframe-container shadow-xl border border-slate-200 mb-8">
+                            <iframe src="https://modyhub.github.io/digital-menu-v2/index.html" title="نظام القائمة الرقمية" loading="lazy"></iframe>
+                        </div>
+                        <div class="flex items-center justify-between mb-4">
+                            <h4 class="text-2xl font-black text-dark" data-i18n="project-2-title">نظام القائمة الرقمية</h4>
+                            <span class="text-slate-400 text-sm font-bold">Web Application</span>
+                        </div>
+                        <p class="text-slate-500 leading-relaxed mb-8" data-i18n="project-2-desc">تطبيق ويب تفاعلي لعرض قوائم الطعام بطريقة حديثة، يتيح تصفح الوجبات والعروض بسهولة مع تجربة مستخدم جذابة.</p>
+                        <div class="flex flex-wrap gap-3 mb-8">
+                            <span class="text-xs font-bold text-slate-600 bg-slate-100 px-3 py-1.5 rounded-lg">Tailwind CSS</span>
+                            <span class="text-xs font-bold text-slate-600 bg-slate-100 px-3 py-1.5 rounded-lg">JavaScript</span>
+                            <span class="text-xs font-bold text-slate-600 bg-slate-100 px-3 py-1.5 rounded-lg">Responsive</span>
+                        </div>
+                    </div>
+                    <div class="p-6 bg-slate-50 border-t border-slate-100 flex justify-between items-center">
+                        <a href="https://modyhub.github.io/digital-menu-v2/index.html" target="_blank" class="text-primary font-bold flex items-center gap-2 hover:gap-3 transition-all">
+                            <span data-i18n="project-btn-open">فتح المشروع</span>
+                            <i data-lucide="external-link" class="w-4 h-4"></i>
+                        </a>
+                        <a href="#" class="text-slate-400 hover:text-dark transition">
+                            <i data-lucide="github" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="bg-white rounded-[3rem] overflow-hidden shadow-sm border border-slate-100 hover-card group reveal flex flex-col" style="transition-delay: 0.2s;">
+                    <div class="p-6 flex-grow">
+                        <div class="iframe-container shadow-xl border border-slate-200 mb-8">
+                            <iframe src="https://quran.rikazalelim.com" title="منصة ركاز القرآن" loading="lazy"></iframe>
+                        </div>
+                        <div class="flex items-center justify-between mb-4">
+                            <h4 class="text-2xl font-black text-dark" data-i18n="project-3-title">منصة ركاز القرآن</h4>
+                            <span class="text-slate-400 text-sm font-bold">E-Learning</span>
+                        </div>
+                        <p class="text-slate-500 leading-relaxed mb-8" data-i18n="project-3-desc">منصة تعليمية متخصصة لتعليم القرآن الكريم واللغة العربية عن بعد، تشمل برامج تحفيظ، تجويد، إجازات، ودورات متنوعة.</p>
+                        <div class="flex flex-wrap gap-3 mb-8">
+                            <span class="text-xs font-bold text-slate-600 bg-slate-100 px-3 py-1.5 rounded-lg">Education</span>
+                            <span class="text-xs font-bold text-slate-600 bg-slate-100 px-3 py-1.5 rounded-lg">React</span>
+                            <span class="text-xs font-bold text-slate-600 bg-slate-100 px-3 py-1.5 rounded-lg">Multilingual</span>
+                        </div>
+                    </div>
+                    <div class="p-6 bg-slate-50 border-t border-slate-100 flex justify-between items-center">
+                        <a href="https://quran.rikazalelim.com" target="_blank" class="text-primary font-bold flex items-center gap-2 hover:gap-3 transition-all">
+                            <span data-i18n="project-btn-open">فتح المشروع</span>
+                            <i data-lucide="external-link" class="w-4 h-4"></i>
+                        </a>
+                        <a href="#" class="text-slate-400 hover:text-dark transition">
+                            <i data-lucide="github" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="bg-white rounded-[3rem] overflow-hidden shadow-sm border border-slate-100 hover-card group reveal flex flex-col" style="transition-delay: 0.3s;">
+                    <div class="p-6 flex-grow">
+                        <div class="iframe-container shadow-xl border border-slate-200 mb-8">
+                            <iframe src="https://modyhub.github.io/nazparfum/index.html" title="متجر NAZ Parfüm" loading="lazy"></iframe>
+                        </div>
+                        <div class="flex items-center justify-between mb-4">
+                            <h4 class="text-2xl font-black text-dark" data-i18n="project-4-title">متجر NAZ Parfüm</h4>
+                            <span class="text-slate-400 text-sm font-bold">E-Commerce UI</span>
+                        </div>
+                        <p class="text-slate-500 leading-relaxed mb-8" data-i18n="project-4-desc">موقع احترافي لعرض العطور الفاخرة بتصميم أنيق يعكس هوية العلامة التجارية مع تكامل وسائل التواصل.</p>
+                        <div class="flex flex-wrap gap-3 mb-8">
+                            <span class="text-xs font-bold text-slate-600 bg-slate-100 px-3 py-1.5 rounded-lg">Branding</span>
+                            <span class="text-xs font-bold text-slate-600 bg-slate-100 px-3 py-1.5 rounded-lg">UI/UX</span>
+                            <span class="text-xs font-bold text-slate-600 bg-slate-100 px-3 py-1.5 rounded-lg">Landing Page</span>
+                        </div>
+                    </div>
+                    <div class="p-6 bg-slate-50 border-t border-slate-100 flex justify-between items-center">
+                        <a href="https://modyhub.github.io/nazparfum/index.html" target="_blank" class="text-primary font-bold flex items-center gap-2 hover:gap-3 transition-all">
+                            <span data-i18n="project-btn-open">فتح المشروع</span>
+                            <i data-lucide="external-link" class="w-4 h-4"></i>
+                        </a>
+                        <a href="#" class="text-slate-400 hover:text-dark transition">
+                            <i data-lucide="github" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-32 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                <div class="reveal">
+                    <h2 class="text-primary font-bold tracking-widest uppercase text-sm mb-4" data-i18n="skills-badge">القدرات التقنية</h2>
+                    <h3 class="text-4xl md:text-5xl font-black font-heading text-dark mb-8" data-i18n="skills-title">المهارات والخبرات</h3>
+                    <p class="text-lg text-slate-500 leading-relaxed mb-12" data-i18n="skills-desc">أمتلك مهارات تقنية متنوعة تشمل لغات البرمجة، تقنيات الويب، وقواعد البيانات، مع تركيز دائم على الجودة والأمان.</p>
+                    
+                    <div class="space-y-8">
+                        <!-- Skill 1 -->
+                        <div>
+                            <div class="flex justify-between mb-3">
+                                <span class="font-bold text-dark">Frontend Development (React, Tailwind)</span>
+                                <span class="text-primary font-black">95%</span>
+                            </div>
+                            <div class="h-3 bg-slate-100 rounded-full overflow-hidden">
+                                <div class="progress-bar h-full bg-primary rounded-full" data-width="95%"></div>
+                            </div>
+                        </div>
+                        <!-- Skill 2 -->
+                        <div>
+                            <div class="flex justify-between mb-3">
+                                <span class="font-bold text-dark">Backend Development (Node.js, PHP)</span>
+                                <span class="text-primary font-black">90%</span>
+                            </div>
+                            <div class="h-3 bg-slate-100 rounded-full overflow-hidden">
+                                <div class="progress-bar h-full bg-primary rounded-full" data-width="90%"></div>
+                            </div>
+                        </div>
+                        <!-- Skill 3 -->
+                        <div>
+                            <div class="flex justify-between mb-3">
+                                <span class="font-bold text-dark">Cybersecurity & Protection</span>
+                                <span class="text-primary font-black">85%</span>
+                            </div>
+                            <div class="h-3 bg-slate-100 rounded-full overflow-hidden">
+                                <div class="progress-bar h-full bg-primary rounded-full" data-width="85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-6 reveal" style="transition-delay: 0.2s;">
+                    <div class="bg-slate-50 p-8 rounded-[2.5rem] text-center hover-card border border-slate-100">
+                        <div class="w-16 h-16 bg-white shadow-sm rounded-2xl flex items-center justify-center mx-auto mb-6">
+                            <i data-lucide="code-2" class="w-8 h-8 text-blue-600"></i>
+                        </div>
+                        <h5 class="font-bold text-dark">Clean Code</h5>
+                    </div>
+                    <div class="bg-slate-50 p-8 rounded-[2.5rem] text-center hover-card border border-slate-100 mt-12">
+                        <div class="w-16 h-16 bg-white shadow-sm rounded-2xl flex items-center justify-center mx-auto mb-6">
+                            <i data-lucide="database" class="w-8 h-8 text-emerald-600"></i>
+                        </div>
+                        <h5 class="font-bold text-dark">Databases</h5>
+                    </div>
+                    <div class="bg-slate-50 p-8 rounded-[2.5rem] text-center hover-card border border-slate-100">
+                        <div class="w-16 h-16 bg-white shadow-sm rounded-2xl flex items-center justify-center mx-auto mb-6">
+                            <i data-lucide="globe" class="w-8 h-8 text-purple-600"></i>
+                        </div>
+                        <h5 class="font-bold text-dark">Web Apps</h5>
+                    </div>
+                    <div class="bg-slate-50 p-8 rounded-[2.5rem] text-center hover-card border border-slate-100 mt-12">
+                        <div class="w-16 h-16 bg-white shadow-sm rounded-2xl flex items-center justify-center mx-auto mb-6">
+                            <i data-lucide="server" class="w-8 h-8 text-red-600"></i>
+                        </div>
+                        <h5 class="font-bold text-dark">Hosting</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Contact Section -->
+    <footer id="contact" class="bg-dark pt-32 pb-12 text-white relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-20"></div>
+        
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center mb-24 reveal">
+                <h2 class="text-primary font-bold tracking-widest uppercase text-sm mb-6" data-i18n="footer-badge">دعنا نبدأ الرحلة</h2>
+                <h3 class="text-5xl md:text-7xl font-black font-heading mb-12" data-i18n="footer-title">هل لديك مشروع عظيم في ذهنك؟</h3>
+                <a href="mailto:contact@muhammedyusuf.com" class="inline-flex items-center space-x-reverse space-x-4 ltr:space-x-4 bg-primary text-white px-12 py-5 rounded-2xl font-bold text-xl hover:bg-blue-700 transition-all shadow-2xl shadow-blue-500/20">
+                    <span data-i18n="footer-btn">تواصل معي الآن</span>
+                    <i data-lucide="mail" class="w-6 h-6"></i>
+                </a>
+            </div>
+
+            <div class="flex flex-col md:flex-row justify-between items-center pt-12 border-t border-slate-800 gap-8">
+                <div class="text-2xl font-black font-heading">
+                    <span class="text-primary">محمد</span> يوسف
+                </div>
+                
+                <div class="flex gap-8">
+                    <a href="https://wa.me/+905013584744" target="_blank" class="social-btn text-slate-400 hover:text-whatsapp">
+                        <i data-lucide="message-circle" class="w-6 h-6"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/muhammed-youssef-6a86b6248" target="_blank" class="social-btn text-slate-400 hover:text-linkedin">
+                        <i data-lucide="linkedin" class="w-6 h-6"></i>
+                    </a>
+                    <a href="mailto:contact@muhammedyusuf.com" class="social-btn text-slate-400 hover:text-email">
+                        <i data-lucide="mail" class="w-6 h-6"></i>
+                    </a>
+                </div>
+
+                <div class="text-slate-500 font-bold text-sm">
+                    &copy; 2026 <span data-i18n="footer-copy">محمد يوسف. جميع الحقوق محفوظة.</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const translations = {
+            ar: {
+                "nav-name": "محمد",
+                "nav-surname": "يوسف",
+                "nav-about": "عني",
+                "nav-services": "الخدمات",
+                "nav-projects": "المشاريع",
+                "nav-skills": "المهارات",
+                "nav-contact": "تواصل معي",
+                "hero-badge": "متاح لمشاريع جديدة لعام 2026",
+                "hero-name": "محمد يوسف",
+                "hero-title": "مهندس حاسوب | مطور مواقع",
+                "hero-desc": "مرحباً! أنا محمد يوسف، مهندس حاسوب متخصص في تطوير تطبيقات الويب والتطبيقات الذكية. أجمع بين هندسة النظم وتطوير الويب لتقديم حلول رقمية آمنة، سريعة، وجميلة. شغفي هو تحويل الأفكار المعقدة إلى واقع ملموس.",
+                "hero-btn-work": "استعرض أعمالي",
+                "hero-btn-talk": "دعنا نتحدث",
+                "stat-projects": "مشروع مكتمل",
+                "stat-experience": "سنوات خبرة",
+                "services-badge": "خدماتي التقنية",
+                "services-title": "ماذا أقدم لعملائي؟",
+                "services-desc": "حلول متكاملة تبدأ من الفكرة وتستمر حتى الإطلاق، مع التركيز على أعلى معايير الجودة والأمان.",
+                "service-1-title": "تطوير مواقع الويب",
+                "service-1-desc": "بناء مواقع ويب احترافية وسريعة باستخدام أحدث التقنيات لضمان تجربة مستخدم ممتازة.",
+                "service-2-title": "حماية النظم",
+                "service-2-desc": "تقديم استشارات أمان شاملة وحلول حماية متقدمة لضمان سلامة بياناتك وأنظمتك.",
+                "service-3-title": "تطوير التطبيقات",
+                "service-3-desc": "تطوير تطبيقات ذكية وسهلة الاستخدام تلبي احتياجاتك الرقمية والإنتاجية.",
+                "service-4-title": "تحسين الأداء",
+                "service-4-desc": "تحسين سرعة وأداء المواقع والتطبيقات لتجربة مستخدم سلسة وخالية من التأخير.",
+                "projects-badge": "معرض الأعمال",
+                "projects-title": "مشاريع تقنية مبتكرة",
+                "project-1-title": "منصة الركاز التعليمية",
+                "project-1-desc": "منصة تعليمية متكاملة لإدارة الدورات والمستخدمين والمحتوى، مع لوحة تحكم ديناميكية ونظام إدارة متكامل باستخدام Node.js وقاعدة بيانات.",
+                "project-2-title": "نظام القائمة الرقمية للمطاعم",
+                "project-2-desc": "تطبيق ويب تفاعلي لعرض قوائم الطعام بطريقة حديثة، يتيح تصفح الوجبات والعروض بسهولة مع تجربة مستخدم جذابة.",
+                "project-3-title": "منصة ركاز القرآن",
+                "project-3-desc": "منصة تعليمية متخصصة لتعليم القرآن الكريم واللغة العربية عن بعد، تشمل برامج تحفيظ، تجويد، إجازات، ودورات متنوعة.",
+                "project-4-title": "متجر NAZ Parfüm",
+                "project-4-desc": "موقع احترافي لعرض العطور الفاخرة بتصميم أنيق يعكس هوية العلامة التجارية مع تكامل وسائل التواصل.",
+                "project-btn-open": "فتح المشروع",
+                "skills-badge": "القدرات التقنية",
+                "skills-title": "المهارات والخبرات",
+                "skills-desc": "أمتلك مهارات تقنية متنوعة تشمل لغات البرمجة، تقنيات الويب، وقواعد البيانات، مع تركيز دائم على الجودة والأمان.",
+                "footer-badge": "دعنا نبدأ الرحلة",
+                "footer-title": "هل لديك مشروع عظيم في ذهنك؟",
+                "footer-btn": "تواصل معي الآن",
+                "footer-copy": "محمد يوسف. جميع الحقوق محفوظة.",
+                "footer-privacy": "الخصوصية",
+                "footer-terms": "الشروط",
+                "footer-blog": "المدونة"
+            },
+            en: {
+                "nav-name": "Muhammed",
+                "nav-surname": "Yusuf",
+                "nav-about": "About",
+                "nav-services": "Services",
+                "nav-projects": "Projects",
+                "nav-skills": "Skills",
+                "nav-contact": "Contact Me",
+                "hero-badge": "Available for new projects 2026",
+                "hero-name": "Muhammed Yusuf",
+                "hero-title": "Computer Engineer | Web Developer",
+                "hero-desc": "Hello! I am Muhammed Yusuf, a Computer Engineer specialized in web and smart application development. I combine system engineering with web development to deliver secure, fast, and beautiful digital solutions. My passion is turning complex ideas into reality.",
+                "hero-btn-work": "View My Work",
+                "hero-btn-talk": "Let's Talk",
+                "stat-projects": "Projects Completed",
+                "stat-experience": "Years Experience",
+                "services-badge": "Technical Services",
+                "services-title": "What I Offer?",
+                "services-desc": "Integrated solutions starting from idea to launch, focusing on the highest standards of quality and security.",
+                "service-1-title": "Web Development",
+                "service-1-desc": "Building professional and fast websites using the latest technologies to ensure an excellent user experience.",
+                "service-2-title": "System Security",
+                "service-2-desc": "Providing comprehensive security consultations and advanced protection solutions to ensure the safety of your data and systems.",
+                "service-3-title": "App Development",
+                "service-3-desc": "Developing smart and easy-to-use applications that meet your digital and productivity needs.",
+                "service-4-title": "Performance Optimization",
+                "service-4-desc": "Improving the speed and performance of websites and applications for a smooth user experience without delay.",
+                "projects-badge": "Portfolio",
+                "projects-title": "Innovative Tech Projects",
+                "project-1-title": "Rikaz Educational Platform",
+                "project-1-desc": "An integrated educational platform for managing courses, users, and content, with a dynamic dashboard and integrated management system using Node.js and a database.",
+                "project-2-title": "Digital Menu System",
+                "project-2-desc": "An interactive web application for displaying food menus in a modern way, allowing users to browse meals and offers easily with an attractive user experience.",
+                "project-3-title": "Rikaz Quran Platform",
+                "project-3-desc": "A specialized educational platform for teaching the Holy Quran and Arabic remotely, including memorization programs, Tajweed, and various courses.",
+                "project-4-title": "NAZ Parfüm Store",
+                "project-4-desc": "A professional website for displaying luxury perfumes with an elegant design that reflects the brand identity with social media integration.",
+                "project-btn-open": "Open Project",
+                "skills-badge": "Technical Capabilities",
+                "skills-title": "Skills & Experience",
+                "skills-desc": "I possess diverse technical skills including programming languages, web technologies, and databases, with a constant focus on quality and security.",
+                "footer-badge": "Let's Start the Journey",
+                "footer-title": "Have a Great Project in Mind?",
+                "footer-btn": "Contact Me Now",
+                "footer-copy": "Muhammed Yusuf. All rights reserved.",
+                "footer-privacy": "Privacy",
+                "footer-terms": "Terms",
+                "footer-blog": "Blog"
+            }
+        };
+
+        let currentLang = 'ar';
+
+        function safeCreateIcons() {
+            if (window.lucide && typeof window.lucide.createIcons === 'function') {
+                window.lucide.createIcons();
+            }
+        }
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            document.documentElement.lang = currentLang;
+            document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+            document.body.classList.toggle('en', currentLang === 'en');
+            
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[currentLang][key]) {
+                    el.textContent = translations[currentLang][key];
+                }
+            });
+
+            const toggleBtn = document.getElementById('lang-toggle');
+            const toggleBtnMobile = document.getElementById('lang-toggle-mobile');
+            if (toggleBtn) toggleBtn.textContent = currentLang === 'ar' ? 'EN' : 'AR';
+            if (toggleBtnMobile) toggleBtnMobile.textContent = currentLang === 'ar' ? 'EN' : 'AR';
+            
+            safeCreateIcons();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            safeCreateIcons();
+            const navbar = document.getElementById('navbar');
+            const menuBtn = document.getElementById('menu-btn');
+            const closeBtn = document.getElementById('close-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+            const sections = document.querySelectorAll('section');
+            const navItems = document.querySelectorAll('.nav-item');
+
+            // Scroll Handler
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('glass-nav', 'py-4');
+                    navbar.classList.remove('py-6');
+                } else {
+                    navbar.classList.remove('glass-nav', 'py-4');
+                    navbar.classList.add('py-6');
+                }
+                
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (window.pageYOffset >= sectionTop - 150) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navItems.forEach(item => {
+                    item.classList.remove('nav-link-active');
+                    if (item.getAttribute('href').includes(current)) {
+                        item.classList.add('nav-link-active');
+                    }
+                });
+            });
+
+            // Mobile Menu Logic
+            const openMenu = () => {
+                mobileMenu.classList.add('open');
+                document.body.classList.add('no-scroll');
+            };
+
+            const closeMenu = () => {
+                mobileMenu.classList.remove('open');
+                document.body.classList.remove('no-scroll');
+            };
+
+            if (menuBtn) menuBtn.addEventListener('click', openMenu);
+            if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+            mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
+            
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeMenu();
+            });
+            
+            // Intersection Observer for Animations
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        entry.target.querySelectorAll('.progress-bar').forEach(bar => {
+                            bar.style.width = bar.dataset.width;
+                        });
+                    }
+                });
+            }, { threshold: 0.15 });
+
+            document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+        });
+    </script>
+</body>
+</html>
