@@ -1,811 +1,1259 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl" class="scroll-smooth">
+<html lang="en" dir="ltr" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="الموقع الرسمي للمهندس محمد يوسف - مهندس حاسوب ومطور مواقع متخصص في الأمان السيبراني والحلول الرقمية المبتكرة.">
-    <title>Muhammed Youssef</title>
-    
-    <!-- Tailwind CSS -->
+    <meta name="description" content="Official portfolio of Muhammed Yusuf — Computer Engineer, Web Developer, and Cybersecurity Specialist.">
+    <meta name="theme-color" content="#061d18">
+    <title>Muhammed Yusuf | Portfolio</title>
+
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts: Cairo & Changa & Inter -->
+    <script defer src="https://unpkg.com/lucide@latest"></script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Changa:wght@500;700&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="muhammed.png.png">
-    <!-- Lucide Icons (via CDN) -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-
-    <style>
-        :root {
-            --primary: #2563eb;
-            --primary-dark: #1e40af;
-            --secondary: #64748b;
-            --accent: #3b82f6;
-            --bg-light: #f8fafc;
-            --glass: rgba(255, 255, 255, 0.75);
-            --whatsapp: #25D366;
-            --linkedin: #0077B5;
-            --email: #EA4335;
-        }
-
-        body {
-            font-family: 'Cairo', sans-serif;
-            background-color: var(--bg-light);
-            color: #0f172a;
-            overflow-x: hidden;
-            transition: background-color 0.3s;
-        }
-
-        body.en {
-            font-family: 'Inter', sans-serif;
-        }
-
-        .font-heading { font-family: 'Changa', sans-serif; }
-        body.en .font-heading { font-family: 'Inter', sans-serif; }
-
-        /* Glassmorphism Effect */
-        .glass-nav {
-            background: var(--glass);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        /* Custom Animations */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .animate-fade-in-up {
-            animation: fadeInUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-        }
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Card Hover Effects */
-        .hover-card {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .hover-card:hover {
-            transform: translateY(-12px) scale(1.02);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #f1f5f9; }
-        ::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
-
-        /* Progress Bar Animation */
-        .progress-bar {
-            width: 0;
-            transition: width 1.5s cubic-bezier(0.65, 0, 0.35, 1);
-        }
-
-        /* Gradient Text */
-        .text-gradient {
-            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .nav-link-active {
-            color: var(--primary) !important;
-            font-weight: 700 !important;
-        }
-        
-        #mobile-menu {
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-            z-index: 10000 !important;
-        }
-        
-        /* RTL/LTR Switch Support with Specificity Fix */
-        html[dir="rtl"] #mobile-menu:not(.open) { transform: translateX(100%); }
-        html[dir="ltr"] #mobile-menu:not(.open) { transform: translateX(-100%); }
-        
-        #mobile-menu.open {
-            transform: translateX(0) !important;
-            opacity: 1;
-            visibility: visible;
-            pointer-events: auto;
-        }
-        
-        .no-scroll {
-            overflow: hidden;
-        }
-
-        /* Iframe Container Responsive */
-        .iframe-container {
-            position: relative;
-            width: 100%;
-            padding-top: 56.25%; /* 16:9 Aspect Ratio */
-            overflow: hidden;
-            border-radius: 1.5rem;
-            background: #e2e8f0;
-        }
-        .iframe-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        /* Social Icon Hover */
-        .social-btn {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .social-btn:hover {
-            transform: translateY(-3px) scale(1.1);
-        }
-        .btn-whatsapp:hover { color: var(--whatsapp); }
-        .btn-linkedin:hover { color: var(--linkedin); }
-        .btn-email:hover { color: var(--email); }
-
-        /* Language Switcher Button */
-        .lang-switch {
-            cursor: pointer;
-            padding: 0.5rem 1rem;
-            border-radius: 0.75rem;
-            background: rgba(37, 99, 235, 0.1);
-            color: var(--primary);
-            font-weight: 700;
-            transition: all 0.3s;
-        }
-        .lang-switch:hover {
-            background: var(--primary);
-            color: white;
-        }
-    </style>
 
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        primary: '#2563eb',
-                        dark: '#0f172a',
-                        whatsapp: '#25D366',
-                        linkedin: '#0077B5',
-                        email: '#EA4335',
+                        forest: '#061d18',
+                        forestSoft: '#0b2c23',
+                        moss: '#7f9146',
+                        gold: '#e7bd55',
+                        cream: '#f5edda'
                     },
                     borderRadius: {
                         '4xl': '2rem',
+                        '5xl': '2.75rem'
                     }
                 }
             }
-        }
+        };
     </script>
+
+    <style>
+        :root {
+            --forest-950: #03130f;
+            --forest-900: #061d18;
+            --forest-850: #08251d;
+            --forest-800: #0b3026;
+            --forest-700: #124334;
+            --moss: #84974d;
+            --moss-soft: #a8b76b;
+            --gold: #e7bd55;
+            --gold-soft: #f0cf78;
+            --cream: #f5edda;
+            --cream-muted: #c9c5b8;
+            --line: rgba(231, 189, 85, 0.18);
+            --white-line: rgba(255, 255, 255, 0.1);
+            --shadow: 0 28px 80px rgba(0, 0, 0, 0.3);
+        }
+
+        * { box-sizing: border-box; }
+
+        html { background: var(--forest-950); }
+
+        body {
+            margin: 0;
+            overflow-x: hidden;
+            background:
+                radial-gradient(circle at 10% 0%, rgba(132, 151, 77, 0.12), transparent 28rem),
+                radial-gradient(circle at 92% 30%, rgba(231, 189, 85, 0.08), transparent 24rem),
+                var(--forest-900);
+            color: var(--cream);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+        }
+
+        body.ar { font-family: 'Cairo', sans-serif; }
+
+        .display-font { font-family: 'Cormorant Garamond', serif; }
+        body.ar .display-font { font-family: 'Cairo', sans-serif; }
+
+        ::selection {
+            background: var(--gold);
+            color: var(--forest-950);
+        }
+
+        ::-webkit-scrollbar { width: 9px; }
+        ::-webkit-scrollbar-track { background: var(--forest-950); }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(var(--moss), var(--gold));
+            border-radius: 999px;
+            border: 2px solid var(--forest-950);
+        }
+
+        a, button, select { -webkit-tap-highlight-color: transparent; }
+
+        :focus-visible {
+            outline: 3px solid var(--gold);
+            outline-offset: 4px;
+            border-radius: 0.75rem;
+        }
+
+        .skip-link {
+            position: fixed;
+            inset-inline-start: 1rem;
+            top: -4rem;
+            z-index: 99999;
+            padding: 0.75rem 1rem;
+            background: var(--gold);
+            color: var(--forest-950);
+            font-weight: 800;
+            border-radius: 0 0 0.8rem 0.8rem;
+            transition: top 0.2s ease;
+        }
+        .skip-link:focus { top: 0; }
+
+        .site-shell {
+            position: relative;
+            isolation: isolate;
+        }
+
+        .site-shell::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.25;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+            background-size: 64px 64px;
+            mask-image: linear-gradient(to bottom, black, transparent 85%);
+        }
+
+        .container-wide {
+            width: min(1180px, calc(100% - 2rem));
+            margin-inline: auto;
+        }
+
+        .glass-nav {
+            background: rgba(3, 19, 15, 0.78);
+            border-bottom: 1px solid var(--white-line);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            box-shadow: 0 12px 45px rgba(0, 0, 0, 0.2);
+        }
+
+        .brand-mark {
+            display: inline-grid;
+            place-items: center;
+            width: 2.25rem;
+            height: 2.25rem;
+            border-radius: 999px 999px 999px 0;
+            transform: rotate(-18deg);
+            background: linear-gradient(135deg, var(--gold), var(--moss-soft));
+            color: var(--forest-950);
+            box-shadow: 0 10px 30px rgba(231, 189, 85, 0.22);
+        }
+        .brand-mark > span { transform: rotate(18deg); font-weight: 900; }
+
+        .nav-item {
+            position: relative;
+            color: rgba(245, 237, 218, 0.72);
+            font-size: 0.84rem;
+            font-weight: 700;
+            transition: color 0.25s ease;
+        }
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            inset-inline: 50%;
+            bottom: -0.65rem;
+            height: 2px;
+            background: var(--gold);
+            transition: inset-inline 0.25s ease;
+        }
+        .nav-item:hover,
+        .nav-item.active { color: var(--cream); }
+        .nav-item:hover::after,
+        .nav-item.active::after { inset-inline: 0; }
+
+        .lang-switch {
+            appearance: none;
+            cursor: pointer;
+            min-width: 7.2rem;
+            padding: 0.62rem 2.25rem 0.62rem 0.95rem;
+            border: 1px solid rgba(231, 189, 85, 0.28);
+            border-radius: 999px;
+            background-color: rgba(255, 255, 255, 0.055);
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='15' height='15' viewBox='0 0 24 24' fill='none' stroke='%23e7bd55' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.8rem center;
+            color: var(--cream);
+            font-size: 0.8rem;
+            font-weight: 800;
+            transition: border-color 0.25s ease, background-color 0.25s ease;
+        }
+        .lang-switch:hover { border-color: var(--gold); background-color: rgba(231, 189, 85, 0.08); }
+        .lang-switch option { background: var(--forest-900); color: var(--cream); }
+        html[dir='rtl'] .lang-switch {
+            padding: 0.62rem 0.95rem 0.62rem 2.25rem;
+            background-position: left 0.8rem center;
+        }
+
+        .button-primary,
+        .button-secondary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.65rem;
+            min-height: 3.15rem;
+            padding: 0.8rem 1.35rem;
+            border-radius: 999px;
+            font-size: 0.88rem;
+            font-weight: 800;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, color 0.25s ease;
+        }
+        .button-primary {
+            background: var(--gold);
+            color: var(--forest-950);
+            box-shadow: 0 14px 36px rgba(231, 189, 85, 0.22);
+        }
+        .button-primary:hover { transform: translateY(-3px); background: var(--gold-soft); box-shadow: 0 18px 45px rgba(231, 189, 85, 0.3); }
+        .button-secondary {
+            border: 1px solid rgba(245, 237, 218, 0.24);
+            color: var(--cream);
+            background: rgba(255, 255, 255, 0.045);
+        }
+        .button-secondary:hover { transform: translateY(-3px); border-color: var(--gold); color: var(--gold); }
+
+        .hero {
+            position: relative;
+            min-height: 100svh;
+            display: flex;
+            align-items: center;
+            padding: 8.5rem 0 6rem;
+            overflow: hidden;
+            background:
+                linear-gradient(90deg, rgba(3, 19, 15, 0.98) 0%, rgba(3, 19, 15, 0.83) 45%, rgba(3, 19, 15, 0.96) 100%),
+                radial-gradient(circle at 70% 30%, rgba(132, 151, 77, 0.23), transparent 32rem),
+                var(--forest-900);
+        }
+
+        .hero::before,
+        .hero::after {
+            content: '';
+            position: absolute;
+            border-radius: 70% 30% 65% 35% / 55% 55% 45% 45%;
+            border: 1px solid rgba(231, 189, 85, 0.12);
+            pointer-events: none;
+        }
+        .hero::before {
+            width: 31rem;
+            height: 31rem;
+            right: -12rem;
+            top: -8rem;
+            transform: rotate(22deg);
+        }
+        .hero::after {
+            width: 20rem;
+            height: 38rem;
+            left: -12rem;
+            bottom: -18rem;
+            transform: rotate(-24deg);
+        }
+
+        .botanical-orbit {
+            position: absolute;
+            width: 8rem;
+            height: 18rem;
+            border: 1px solid rgba(231, 189, 85, 0.14);
+            border-radius: 100% 0 100% 0;
+            transform: rotate(28deg);
+            opacity: 0.9;
+        }
+        .botanical-orbit::before,
+        .botanical-orbit::after {
+            content: '';
+            position: absolute;
+            width: 4rem;
+            height: 7rem;
+            border: 1px solid rgba(168, 183, 107, 0.22);
+            border-radius: 100% 0 100% 0;
+        }
+        .botanical-orbit::before { top: 2rem; left: -2rem; transform: rotate(-40deg); }
+        .botanical-orbit::after { bottom: 1.5rem; right: -2rem; transform: rotate(45deg); }
+
+        .hero-kicker,
+        .section-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            width: fit-content;
+            border: 1px solid rgba(231, 189, 85, 0.24);
+            border-radius: 999px;
+            padding: 0.48rem 0.85rem;
+            color: var(--gold-soft);
+            background: rgba(231, 189, 85, 0.065);
+            font-size: 0.72rem;
+            font-weight: 900;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+        }
+
+        .hero-title {
+            max-width: 13ch;
+            margin: 1.45rem 0 1.2rem;
+            color: var(--cream);
+            font-size: clamp(3.65rem, 8vw, 7.8rem);
+            font-weight: 700;
+            line-height: 0.85;
+            letter-spacing: -0.045em;
+            text-wrap: balance;
+        }
+
+        .hero-title .accent { color: var(--gold); }
+
+        .hero-description {
+            max-width: 43rem;
+            color: rgba(245, 237, 218, 0.67);
+            font-size: clamp(1rem, 1.4vw, 1.12rem);
+            line-height: 1.9;
+        }
+
+        .portrait-shell {
+            position: relative;
+            max-width: 30rem;
+            margin-inline: auto;
+        }
+        .portrait-frame {
+            position: relative;
+            aspect-ratio: 4 / 5;
+            overflow: hidden;
+            border: 1px solid rgba(231, 189, 85, 0.2);
+            border-radius: 48% 48% 2rem 2rem;
+            background:
+                radial-gradient(circle at 50% 25%, rgba(231, 189, 85, 0.2), transparent 35%),
+                linear-gradient(145deg, var(--forest-700), var(--forest-950));
+            box-shadow: var(--shadow);
+        }
+        .portrait-frame::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(3, 19, 15, 0.82), transparent 45%);
+            pointer-events: none;
+        }
+        .portrait-fallback {
+            position: absolute;
+            inset: 0;
+            display: grid;
+            place-items: center;
+            color: rgba(245, 237, 218, 0.12);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 10rem;
+            font-weight: 700;
+        }
+        .portrait-frame img {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            filter: saturate(0.8) contrast(1.05);
+        }
+
+        .floating-note {
+            position: absolute;
+            z-index: 4;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.85rem 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 1.2rem;
+            background: rgba(6, 29, 24, 0.82);
+            backdrop-filter: blur(14px);
+            box-shadow: 0 16px 46px rgba(0, 0, 0, 0.24);
+        }
+        .floating-note.top { top: 15%; left: -12%; }
+        .floating-note.bottom { right: -12%; bottom: 10%; }
+        .floating-note-icon {
+            display: grid;
+            place-items: center;
+            width: 2.55rem;
+            height: 2.55rem;
+            flex: none;
+            border-radius: 999px;
+            background: var(--gold);
+            color: var(--forest-950);
+        }
+
+        .hero-info-card {
+            position: relative;
+            margin-top: 4rem;
+            padding: 1.25rem;
+            overflow: hidden;
+            border: 1px solid rgba(231, 189, 85, 0.16);
+            border-radius: 1.85rem;
+            background: linear-gradient(125deg, rgba(16, 67, 52, 0.98), rgba(7, 39, 31, 0.98));
+            box-shadow: var(--shadow);
+        }
+        .hero-info-card::after {
+            content: '';
+            position: absolute;
+            width: 17rem;
+            height: 17rem;
+            right: -8rem;
+            bottom: -10rem;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(231, 189, 85, 0.22), transparent 68%);
+        }
+        html[dir='rtl'] .hero-info-card::after { right: auto; left: -8rem; }
+
+        .metric {
+            border-inline-start: 1px solid rgba(231, 189, 85, 0.22);
+            padding-inline-start: 1rem;
+        }
+
+        .section {
+            position: relative;
+            padding: clamp(5.5rem, 9vw, 8rem) 0;
+            overflow: hidden;
+        }
+
+        .section-heading {
+            max-width: 13ch;
+            margin-top: 0.9rem;
+            color: var(--cream);
+            font-size: clamp(2.8rem, 6vw, 5.2rem);
+            font-weight: 700;
+            line-height: 0.94;
+            letter-spacing: -0.035em;
+            text-wrap: balance;
+        }
+
+        .section-copy {
+            color: rgba(245, 237, 218, 0.62);
+            line-height: 1.85;
+        }
+
+        .project-card {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 2rem;
+            background: rgba(11, 48, 38, 0.72);
+            box-shadow: 0 22px 65px rgba(0, 0, 0, 0.2);
+            transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-9px);
+            border-color: rgba(231, 189, 85, 0.38);
+            box-shadow: 0 30px 78px rgba(0, 0, 0, 0.28);
+        }
+
+        .browser-bar {
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+            height: 2.55rem;
+            padding-inline: 1rem;
+            background: rgba(3, 19, 15, 0.75);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .browser-dot { width: 0.55rem; height: 0.55rem; border-radius: 999px; background: rgba(245, 237, 218, 0.28); }
+        .browser-dot:first-child { background: var(--gold); }
+
+        .iframe-container {
+            position: relative;
+            width: 100%;
+            padding-top: 58%;
+            overflow: hidden;
+            background: var(--forest-950);
+        }
+        .iframe-container iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+            background: #fff;
+        }
+
+        .project-tag {
+            display: inline-flex;
+            align-items: center;
+            border: 1px solid rgba(231, 189, 85, 0.18);
+            border-radius: 999px;
+            padding: 0.35rem 0.65rem;
+            background: rgba(231, 189, 85, 0.07);
+            color: var(--gold-soft);
+            font-size: 0.68rem;
+            font-weight: 800;
+        }
+
+        .tech-band {
+            overflow: hidden;
+            border-block: 1px solid rgba(3, 19, 15, 0.2);
+            background: var(--gold);
+            color: var(--forest-950);
+        }
+        .tech-track {
+            display: flex;
+            align-items: center;
+            width: max-content;
+            min-width: 100%;
+            padding: 1rem 0;
+            animation: marquee 24s linear infinite;
+        }
+        .tech-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            padding-inline: 2.25rem;
+            font-size: 0.78rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            white-space: nowrap;
+        }
+        .tech-item::after {
+            content: '✦';
+            margin-inline-start: 2.25rem;
+            opacity: 0.65;
+        }
+        @keyframes marquee { to { transform: translateX(-50%); } }
+        html[dir='rtl'] .tech-track { animation-direction: reverse; }
+
+        .service-card,
+        .achievement-card,
+        .skill-panel {
+            border: 1px solid rgba(255, 255, 255, 0.085);
+            background: linear-gradient(145deg, rgba(11, 48, 38, 0.9), rgba(6, 29, 24, 0.92));
+            box-shadow: 0 18px 50px rgba(0, 0, 0, 0.18);
+        }
+
+        .service-card {
+            min-height: 20rem;
+            display: flex;
+            flex-direction: column;
+            padding: 2rem;
+            border-radius: 1.7rem;
+            transition: transform 0.35s ease, border-color 0.35s ease, background 0.35s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(231, 189, 85, 0.34);
+            background: linear-gradient(145deg, rgba(18, 67, 52, 0.98), rgba(6, 29, 24, 0.98));
+        }
+
+        .icon-leaf {
+            display: grid;
+            place-items: center;
+            width: 4rem;
+            height: 4rem;
+            border-radius: 65% 35% 65% 35%;
+            transform: rotate(-12deg);
+            border: 1px solid rgba(231, 189, 85, 0.25);
+            background: rgba(231, 189, 85, 0.07);
+            color: var(--gold);
+        }
+        .icon-leaf > * { transform: rotate(12deg); }
+
+        .skill-panel {
+            padding: clamp(1.5rem, 4vw, 2.7rem);
+            border-radius: 2rem;
+        }
+        .skill-row + .skill-row { margin-top: 1.8rem; }
+        .skill-track {
+            height: 0.48rem;
+            overflow: hidden;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.09);
+        }
+        .skill-fill {
+            width: 0;
+            height: 100%;
+            border-radius: inherit;
+            background: linear-gradient(90deg, var(--moss), var(--gold));
+            transition: width 1.25s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .capability-card {
+            min-height: 10rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 1.4rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 1.45rem;
+            background: rgba(255, 255, 255, 0.035);
+            transition: border-color 0.3s ease, transform 0.3s ease;
+        }
+        .capability-card:hover { transform: translateY(-5px); border-color: rgba(231, 189, 85, 0.28); }
+
+        .cyber-stage {
+            position: relative;
+            overflow: hidden;
+            padding: clamp(1.5rem, 4vw, 3.5rem);
+            border: 1px solid rgba(231, 189, 85, 0.18);
+            border-radius: 2.4rem;
+            background:
+                radial-gradient(circle at 92% 10%, rgba(231, 189, 85, 0.16), transparent 22rem),
+                radial-gradient(circle at 0% 100%, rgba(132, 151, 77, 0.17), transparent 24rem),
+                linear-gradient(140deg, #09291f, #031711);
+            box-shadow: var(--shadow);
+        }
+        .cyber-stage::before {
+            content: '';
+            position: absolute;
+            inset: 1.1rem;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.055);
+            border-radius: 1.75rem;
+        }
+
+        .achievement-card {
+            position: relative;
+            min-height: 18rem;
+            padding: 1.65rem;
+            border-radius: 1.6rem;
+            transition: transform 0.35s ease, border-color 0.35s ease;
+        }
+        .achievement-card:hover { transform: translateY(-7px); border-color: rgba(231, 189, 85, 0.34); }
+        .achievement-number {
+            position: absolute;
+            top: 0.8rem;
+            inset-inline-end: 1rem;
+            color: rgba(245, 237, 218, 0.055);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 5rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .contact-card {
+            position: relative;
+            overflow: hidden;
+            padding: clamp(2.2rem, 7vw, 5.5rem);
+            border: 1px solid rgba(231, 189, 85, 0.22);
+            border-radius: 2.5rem;
+            background:
+                linear-gradient(115deg, rgba(3, 19, 15, 0.92), rgba(11, 48, 38, 0.84)),
+                radial-gradient(circle at 80% 20%, rgba(231, 189, 85, 0.2), transparent 20rem);
+            box-shadow: var(--shadow);
+        }
+        .contact-card::before,
+        .contact-card::after {
+            content: '';
+            position: absolute;
+            width: 16rem;
+            height: 16rem;
+            border: 1px solid rgba(231, 189, 85, 0.13);
+            border-radius: 60% 40% 65% 35%;
+        }
+        .contact-card::before { right: -5rem; top: -8rem; transform: rotate(25deg); }
+        .contact-card::after { left: -7rem; bottom: -10rem; transform: rotate(-35deg); }
+
+        .social-link {
+            display: inline-grid;
+            place-items: center;
+            width: 2.8rem;
+            height: 2.8rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 999px;
+            color: rgba(245, 237, 218, 0.64);
+            transition: color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+        }
+        .social-link:hover { color: var(--gold); border-color: var(--gold); transform: translateY(-3px); }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(34px);
+            transition: opacity 0.75s ease, transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        #mobile-menu {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transform: translateY(-1rem);
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+        }
+        #mobile-menu.open {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+        .no-scroll { overflow: hidden; }
+
+        @media (max-width: 1023px) {
+            .hero { padding-top: 7.5rem; }
+            .hero-title { max-width: 15ch; }
+            .floating-note.top { left: -2%; }
+            .floating-note.bottom { right: -2%; }
+        }
+
+        @media (max-width: 767px) {
+            .container-wide { width: min(100% - 1.25rem, 1180px); }
+            .hero { padding-bottom: 4.5rem; }
+            .hero-title { font-size: clamp(3.2rem, 16vw, 5.1rem); }
+            .portrait-shell { max-width: 22rem; }
+            .floating-note { padding: 0.65rem 0.8rem; }
+            .floating-note.top { left: -0.2rem; top: 8%; }
+            .floating-note.bottom { right: -0.2rem; bottom: 6%; }
+            .floating-note p { font-size: 0.65rem; }
+            .hero-info-card { margin-top: 2.5rem; }
+            .section { padding-block: 5.3rem; }
+            .service-card { min-height: auto; }
+            .tech-track { animation-duration: 18s; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                scroll-behavior: auto !important;
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            .reveal { opacity: 1; transform: none; }
+            .skill-fill { width: var(--target-width, 0); }
+        }
+    </style>
 </head>
-<body class="antialiased">
+<body class="en">
+    <a class="skip-link" href="#main-content">Skip to content</a>
 
-    <!-- Navbar -->
-    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 py-6">
-        <div class="container mx-auto px-6 flex justify-between items-center">
-            <a href="#" class="text-2xl font-black font-heading tracking-tighter text-dark group">
-                <span class="text-primary group-hover:text-blue-700 transition" data-i18n="nav-name">محمد</span> <span data-i18n="nav-surname">يوسف</span>
-            </a>
-            
-            <!-- Desktop Links -->
-            <div class="hidden md:flex items-center space-x-reverse space-x-8 rtl:space-x-reverse ltr:space-x-8">
-                <a href="#about" class="nav-item text-sm font-bold text-slate-600 hover:text-primary transition-colors relative group" data-i18n="nav-about">عني</a>
-                <a href="#services" class="nav-item text-sm font-bold text-slate-600 hover:text-primary transition-colors relative group" data-i18n="nav-services">الخدمات</a>
-                <a href="#projects" class="nav-item text-sm font-bold text-slate-600 hover:text-primary transition-colors relative group" data-i18n="nav-projects">المشاريع</a>
-                <a href="#skills" class="nav-item text-sm font-bold text-slate-600 hover:text-primary transition-colors relative group" data-i18n="nav-skills">المهارات</a>
-                
-                <!-- Language Switcher -->
-                <button onclick="toggleLanguage()" class="lang-switch text-sm" id="lang-toggle">EN</button>
-
-                <!-- Social & Contact Icons in Navbar -->
-                <div class="flex items-center space-x-reverse space-x-4 rtl:space-x-reverse ltr:space-x-4">
-                    <a href="https://wa.me/+905013584744" target="_blank" class="social-btn btn-whatsapp text-slate-400" title="واتساب">
-                        <i data-lucide="message-circle" class="w-6 h-6"></i>
-                    </a>
-                    <a href="https://linkedin.com/in/muhammed-youssef-6a86b6248" target="_blank" class="social-btn btn-linkedin text-slate-400" title="لينكد إن">
-                        <i data-lucide="linkedin" class="w-6 h-6"></i>
-                    </a>
-                    <a href="mailto:contact@muhammedyusuf.com" class="social-btn btn-email text-slate-400" title="بريد إلكتروني">
-                        <i data-lucide="mail" class="w-6 h-6"></i>
-                    </a>
-                    <a href="#contact" class="bg-primary text-white px-6 py-2.5 rounded-xl font-bold hover:bg-blue-700 transition shadow-lg shadow-blue-200" data-i18n="nav-contact">
-                        تواصل معي
-                    </a>
-                </div>
-            </div>
-
-            <!-- Mobile Menu Button -->
-            <button id="menu-btn" class="md:hidden text-dark focus:outline-none" type="button" aria-label="فتح القائمة">
-                <i data-lucide="menu" class="w-8 h-8"></i>
-            </button>
-        </div>
-    </nav>
-
-    <!-- Mobile Menu (Moved outside nav to body) -->
-    <div id="mobile-menu" class="fixed inset-0 bg-white flex flex-col items-center justify-center space-y-8 md:hidden">
-        <button id="close-btn" class="absolute top-8 right-8 text-dark" type="button" aria-label="إغلاق القائمة">
-            <i data-lucide="x" class="w-10 h-10"></i>
-        </button>
-        <a href="#about" class="mobile-nav-link text-3xl font-bold" data-i18n="nav-about">عني</a>
-        <a href="#services" class="mobile-nav-link text-3xl font-bold" data-i18n="nav-services">الخدمات</a>
-        <a href="#projects" class="mobile-nav-link text-3xl font-bold" data-i18n="nav-projects">المشاريع</a>
-        <a href="#skills" class="mobile-nav-link text-3xl font-bold" data-i18n="nav-skills">المهارات</a>
-        <a href="#contact" class="mobile-nav-link text-3xl font-bold text-primary" data-i18n="nav-contact">تواصل معي</a>
-        
-        <button onclick="toggleLanguage()" class="lang-switch text-xl" id="lang-toggle-mobile">EN</button>
-
-        <div class="flex gap-8 pt-6">
-            <a href="https://wa.me/+905013584744" target="_blank" class="text-whatsapp">
-                <i data-lucide="message-circle" class="w-10 h-10"></i>
-            </a>
-            <a href="https://linkedin.com/in/muhammed-youssef-6a86b6248" target="_blank" class="text-linkedin">
-                <i data-lucide="linkedin" class="w-10 h-10"></i>
-            </a>
-            <a href="mailto:contact@muhammedyusuf.com" class="text-email">
-                <i data-lucide="mail" class="w-10 h-10"></i>
-            </a>
-        </div>
-    </div>
-
-    <!-- Hero Section -->
-    <section id="about" class="min-h-screen flex items-center pt-20 bg-gradient-to-br from-slate-50 via-white to-blue-50">
-        <div class="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div class="order-2 lg:order-1 text-center lg:text-right ltr:lg:text-left space-y-8 animate-fade-in-up">
-                <div class="inline-flex items-center space-x-reverse space-x-3 ltr:space-x-3 bg-blue-100/50 text-primary px-4 py-2 rounded-full text-sm font-bold">
-                    <span class="relative flex h-3 w-3">
-                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                        <span class="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
+    <div class="site-shell">
+        <nav id="navbar" class="fixed inset-x-0 top-0 z-50 py-5 transition-all duration-300" aria-label="Primary navigation">
+            <div class="container-wide flex items-center justify-between gap-4">
+                <a href="#about" class="flex items-center gap-3" aria-label="Muhammed Yusuf home">
+                    <span class="brand-mark" aria-hidden="true"><span>M</span></span>
+                    <span class="display-font text-2xl font-bold tracking-tight text-cream">
+                        <span data-i18n="nav-name">Muhammed</span> <span class="text-gold" data-i18n="nav-surname">Yusuf</span>
                     </span>
-                    <span data-i18n="hero-badge">متاح لمشاريع جديدة لعام 2026</span>
-                </div>
-                <h1 class="text-5xl md:text-7xl font-black font-heading leading-tight text-dark">
-                    <span data-i18n="hero-name">محمد يوسف</span> <br>
-                    <span class="text-gradient" data-i18n="hero-title">مهندس حاسوب | مطور مواقع</span>
-                </h1>
-                <p class="text-xl text-slate-500 leading-relaxed max-w-2xl mx-auto lg:mx-0" data-i18n="hero-desc">
-                    مرحباً! أنا محمد يوسف، مهندس حاسوب متخصص في تطوير تطبيقات الويب والتطبيقات الذكية. أجمع بين هندسة النظم وتطوير الويب لتقديم حلول رقمية آمنة، سريعة، وجميلة. شغفي هو تحويل الأفكار المعقدة إلى واقع ملموس.
-                </p>
-                <div class="flex flex-wrap gap-5 justify-center lg:justify-start">
-                    <a href="#projects" class="group flex items-center space-x-reverse space-x-3 ltr:space-x-3 bg-dark text-white px-10 py-4 rounded-2xl font-bold hover:bg-slate-800 transition shadow-2xl">
-                        <span data-i18n="hero-btn-work">استعرض أعمالي</span>
-                        <i data-lucide="arrow-left" class="w-5 h-5 group-hover:translate-x-[-5px] ltr:group-hover:translate-x-[5px] ltr:rotate-180 ltr:inline-block hidden transition-transform"></i>
-                        <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-[5px] ltr:hidden transition-transform"></i>
-                    </a>
-                    <a href="#contact" class="flex items-center space-x-reverse space-x-3 ltr:space-x-3 bg-white border-2 border-slate-200 text-dark px-10 py-4 rounded-2xl font-bold hover:border-primary hover:text-primary transition">
-                        <span data-i18n="hero-btn-talk">دعنا نتحدث</span>
-                        <i data-lucide="message-circle" class="w-5 h-5"></i>
-                    </a>
-                </div>
-            </div>
-            
-            <div class="order-1 lg:order-2 flex justify-center relative animate-fade-in-up" style="animation-delay: 0.2s;">
-                <div class="relative z-10 group">
-                    <div class="absolute -inset-4 bg-gradient-to-tr from-primary to-blue-400 rounded-[3rem] blur-2xl opacity-20 group-hover:opacity-30 transition duration-500"></div>
-                    <div class="w-72 h-72 md:w-96 md:h-96 bg-white rounded-[3rem] overflow-hidden border-[12px] border-white shadow-2xl relative">
-                        <img src="muhammed.png.png" alt="محمد يوسف" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-700">
-                    </div>
-                    <!-- Stats Floating Card -->
-                    <div class="absolute -bottom-6 -right-6 md:-right-10 ltr:-left-6 md:ltr:-left-10 bg-white p-6 rounded-3xl shadow-2xl border border-slate-100 reveal">
-                        <div class="flex items-center space-x-reverse space-x-4 ltr:space-x-4">
-                            <div class="w-12 h-12 bg-green-100 text-green-600 rounded-2xl flex items-center justify-center">
-                                <i data-lucide="check-circle" class="w-6 h-6"></i>
-                            </div>
-                            <div>
-                                <div class="text-2xl font-black text-dark">+6</div>
-                                <div class="text-xs font-bold text-slate-400" data-i18n="stat-projects">مشروع مكتمل</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="py-32 bg-white">
-        <div class="container mx-auto px-6">
-            <div class="max-w-3xl mx-auto text-center mb-20 reveal">
-                <h2 class="text-primary font-bold tracking-widest uppercase text-sm mb-4" data-i18n="services-badge">خدماتي التقنية</h2>
-                <h3 class="text-4xl md:text-5xl font-black font-heading text-dark mb-6" data-i18n="services-title">ماذا أقدم لعملائي؟</h3>
-                <p class="text-lg text-slate-500" data-i18n="services-desc">حلول متكاملة تبدأ من الفكرة وتستمر حتى الإطلاق، مع التركيز على أعلى معايير الجودة والأمان.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Service 1 -->
-                <div class="bg-slate-50 p-10 rounded-[2.5rem] hover-card border border-slate-100 group reveal">
-                    <div class="w-16 h-16 bg-blue-100 text-primary rounded-2xl flex items-center justify-center mb-8 group-hover:bg-primary group-hover:text-white transition-colors duration-500">
-                        <i data-lucide="layout" class="w-8 h-8"></i>
-                    </div>
-                    <h4 class="text-2xl font-bold mb-4" data-i18n="service-1-title">تطوير مواقع الويب</h4>
-                    <p class="text-slate-500 leading-relaxed" data-i18n="service-1-desc">بناء مواقع ويب احترافية وسريعة باستخدام أحدث التقنيات لضمان تجربة مستخدم ممتازة.</p>
-                </div>
-                <!-- Service 2 -->
-                <div class="bg-slate-50 p-10 rounded-[2.5rem] hover-card border border-slate-100 group reveal" style="transition-delay: 0.1s;">
-                    <div class="w-16 h-16 bg-red-100 text-red-600 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-red-600 group-hover:text-white transition-colors duration-500">
-                        <i data-lucide="shield-check" class="w-8 h-8"></i>
-                    </div>
-                    <h4 class="text-2xl font-bold mb-4" data-i18n="service-2-title">حماية النظم</h4>
-                    <p class="text-slate-500 leading-relaxed" data-i18n="service-2-desc">تقديم استشارات أمان شاملة وحلول حماية متقدمة لضمان سلامة بياناتك وأنظمتك.</p>
-                </div>
-                <!-- Service 3 -->
-                <div class="bg-slate-50 p-10 rounded-[2.5rem] hover-card border border-slate-100 group reveal" style="transition-delay: 0.2s;">
-                    <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-emerald-600 group-hover:text-white transition-colors duration-500">
-                        <i data-lucide="smartphone" class="w-8 h-8"></i>
-                    </div>
-                    <h4 class="text-2xl font-bold mb-4" data-i18n="service-3-title">تطوير التطبيقات</h4>
-                    <p class="text-slate-500 leading-relaxed" data-i18n="service-3-desc">تطوير تطبيقات ذكية وسهلة الاستخدام تلبي احتياجاتك الرقمية والإنتاجية.</p>
-                </div>
-                <!-- Service 4 -->
-                <div class="bg-slate-50 p-10 rounded-[2.5rem] hover-card border border-slate-100 group reveal" style="transition-delay: 0.3s;">
-                    <div class="w-16 h-16 bg-purple-100 text-purple-600 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-purple-600 group-hover:text-white transition-colors duration-500">
-                        <i data-lucide="zap" class="w-8 h-8"></i>
-                    </div>
-                    <h4 class="text-2xl font-bold mb-4" data-i18n="service-4-title">تحسين الأداء</h4>
-                    <p class="text-slate-500 leading-relaxed" data-i18n="service-4-desc">تحسين سرعة وأداء المواقع والتطبيقات لتجربة مستخدم سلسة وخالية من التأخير.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="py-32 bg-slate-50">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-16 reveal">
-                <div class="max-w-2xl text-right ltr:text-left">
-                    <h2 class="text-primary font-bold tracking-widest uppercase text-sm mb-4" data-i18n="projects-badge">معرض الأعمال</h2>
-                    <h3 class="text-4xl md:text-5xl font-black font-heading text-dark" data-i18n="projects-title">مشاريع تقنية مبتكرة</h3>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                <!-- Project 1 -->
-                <div class="bg-white rounded-[3rem] overflow-hidden shadow-sm border border-slate-100 hover-card group reveal flex flex-col">
-                    <div class="p-6 flex-grow">
-                        <div class="iframe-container shadow-xl border border-slate-200 mb-8">
-                            <iframe src="https://rikazalelim.com" title="منصة الركاز التعليمية" loading="lazy"></iframe>
-                        </div>
-                        <div class="flex items-center justify-between mb-4">
-                            <h4 class="text-2xl font-black text-dark" data-i18n="project-1-title">منصة الركاز التعليمية</h4>
-                            <span class="text-slate-400 text-sm font-bold">Full Stack Platform</span>
-                        </div>
-                        <p class="text-slate-500 leading-relaxed mb-8" data-i18n="project-1-desc">منصة تعليمية متكاملة لإدارة الدورات والمستخدمين والمحتوى، مع لوحة تحكم ديناميكية ونظام إدارة متكامل باستخدام Node.js وقاعدة بيانات.</p>
-                        <div class="flex flex-wrap gap-3 mb-8">
-                            <span class="text-xs font-bold text-slate-600 bg-slate-100 px-3 py-1.5 rounded-lg">Node.js</span>
-                            <span class="text-xs font-bold text-slate-600 bg-slate-100 px-3 py-1.5 rounded-lg">Database</span>
-                            <span class="text-xs font-bold text-slate-600 bg-slate-100 px-3 py-1.5 rounded-lg">Dashboard</span>
-                        </div>
-                    </div>
-                    <div class="p-6 bg-slate-50 border-t border-slate-100 flex justify-between items-center">
-                        <a href="https://rikazalelim.com" target="_blank" class="text-primary font-bold flex items-center gap-2 hover:gap-3 transition-all">
-                            <span data-i18n="project-btn-open">فتح المشروع</span>
-                            <i data-lucide="external-link" class="w-4 h-4"></i>
-                        </a>
-                        <a href="#" class="text-slate-400 hover:text-dark transition">
-                            <i data-lucide="github" class="w-5 h-5"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 2 -->
-                <div class="bg-white rounded-[3rem] overflow-hidden shadow-sm border border-slate-100 hover-card group reveal flex flex-col" style="transition-delay: 0.1s;">
-                    <div class="p-6 flex-grow">
-                        <div class="iframe-container shadow-xl border border-slate-200 mb-8">
-                            <iframe src="https://modyhub.github.io/digital-menu-v2/index.html" title="نظام القائمة الرقمية" loading="lazy"></iframe>
-                        </div>
-                        <div class="flex items-center justify-between mb-4">
-                            <h4 class="text-2xl font-black text-dark" data-i18n="project-2-title">نظام القائمة الرقمية</h4>
-                            <span class="text-slate-400 text-sm font-bold">Web Application</span>
-                        </div>
-                        <p class="text-slate-500 leading-relaxed mb-8" data-i18n="project-2-desc">تطبيق ويب تفاعلي لعرض قوائم الطعام بطريقة حديثة، يتيح تصفح الوجبات والعروض بسهولة مع تجربة مستخدم جذابة.</p>
-                        <div class="flex flex-wrap gap-3 mb-8">
-                            <span class="text-xs font-bold text-slate-600 bg-slate-100 px-3 py-1.5 rounded-lg">Tailwind CSS</span>
-                            <span class="text-xs font-bold text-slate-600 bg-slate-100 px-3 py-1.5 rounded-lg">JavaScript</span>
-                            <span class="text-xs font-bold text-slate-600 bg-slate-100 px-3 py-1.5 rounded-lg">Responsive</span>
-                        </div>
-                    </div>
-                    <div class="p-6 bg-slate-50 border-t border-slate-100 flex justify-between items-center">
-                        <a href="https://modyhub.github.io/digital-menu-v2/index.html" target="_blank" class="text-primary font-bold flex items-center gap-2 hover:gap-3 transition-all">
-                            <span data-i18n="project-btn-open">فتح المشروع</span>
-                            <i data-lucide="external-link" class="w-4 h-4"></i>
-                        </a>
-                        <a href="#" class="text-slate-400 hover:text-dark transition">
-                            <i data-lucide="github" class="w-5 h-5"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="bg-white rounded-[3rem] overflow-hidden shadow-sm border border-slate-100 hover-card group reveal flex flex-col" style="transition-delay: 0.2s;">
-                    <div class="p-6 flex-grow">
-                        <div class="iframe-container shadow-xl border border-slate-200 mb-8">
-                            <iframe src="https://www.rikaz.academy/" title="منصة ركاز القرآن" loading="lazy"></iframe>
-                        </div>
-                        <div class="flex items-center justify-between mb-4">
-                            <h4 class="text-2xl font-black text-dark" data-i18n="project-3-title">منصة ركاز القرآن</h4>
-                            <span class="text-slate-400 text-sm font-bold">E-Learning</span>
-                        </div>
-                        <p class="text-slate-500 leading-relaxed mb-8" data-i18n="project-3-desc">منصة تعليمية متخصصة لتعليم القرآن الكريم واللغة العربية عن بعد، تشمل برامج تحفيظ، تجويد، إجازات، ودورات متنوعة.</p>
-                        <div class="flex flex-wrap gap-3 mb-8">
-                            <span class="text-xs font-bold text-slate-600 bg-slate-100 px-3 py-1.5 rounded-lg">Education</span>
-                            <span class="text-xs font-bold text-slate-600 bg-slate-100 px-3 py-1.5 rounded-lg">React</span>
-                            <span class="text-xs font-bold text-slate-600 bg-slate-100 px-3 py-1.5 rounded-lg">Multilingual</span>
-                        </div>
-                    </div>
-                    <div class="p-6 bg-slate-50 border-t border-slate-100 flex justify-between items-center">
-                        <a href="https://www.rikaz.academy/" target="_blank" class="text-primary font-bold flex items-center gap-2 hover:gap-3 transition-all">
-                            <span data-i18n="project-btn-open">فتح المشروع</span>
-                            <i data-lucide="external-link" class="w-4 h-4"></i>
-                        </a>
-                        <a href="#" class="text-slate-400 hover:text-dark transition">
-                            <i data-lucide="github" class="w-5 h-5"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 4 -->
-                <div class="bg-white rounded-[3rem] overflow-hidden shadow-sm border border-slate-100 hover-card group reveal flex flex-col" style="transition-delay: 0.3s;">
-                    <div class="p-6 flex-grow">
-                        <div class="iframe-container shadow-xl border border-slate-200 mb-8">
-                            <iframe src="https://www.nazperfume.com/" title="متجر NAZ Parfüm" loading="lazy"></iframe>
-                        </div>
-                        <div class="flex items-center justify-between mb-4">
-                            <h4 class="text-2xl font-black text-dark" data-i18n="project-4-title">متجر NAZ Parfüm</h4>
-                            <span class="text-slate-400 text-sm font-bold">E-Commerce UI</span>
-                        </div>
-                        <p class="text-slate-500 leading-relaxed mb-8" data-i18n="project-4-desc">موقع احترافي لعرض العطور الفاخرة بتصميم أنيق يعكس هوية العلامة التجارية مع تكامل وسائل التواصل.</p>
-                        <div class="flex flex-wrap gap-3 mb-8">
-                            <span class="text-xs font-bold text-slate-600 bg-slate-100 px-3 py-1.5 rounded-lg">Branding</span>
-                            <span class="text-xs font-bold text-slate-600 bg-slate-100 px-3 py-1.5 rounded-lg">UI/UX</span>
-                            <span class="text-xs font-bold text-slate-600 bg-slate-100 px-3 py-1.5 rounded-lg">Landing Page</span>
-                        </div>
-                    </div>
-                    <div class="p-6 bg-slate-50 border-t border-slate-100 flex justify-between items-center">
-                        <a href="https://www.nazperfume.com/" target="_blank" class="text-primary font-bold flex items-center gap-2 hover:gap-3 transition-all">
-                            <span data-i18n="project-btn-open">فتح المشروع</span>
-                            <i data-lucide="external-link" class="w-4 h-4"></i>
-                        </a>
-                        <a href="#" class="text-slate-400 hover:text-dark transition">
-                            <i data-lucide="github" class="w-5 h-5"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="py-32 bg-white">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-                <div class="reveal">
-                    <h2 class="text-primary font-bold tracking-widest uppercase text-sm mb-4" data-i18n="skills-badge">القدرات التقنية</h2>
-                    <h3 class="text-4xl md:text-5xl font-black font-heading text-dark mb-8" data-i18n="skills-title">المهارات والخبرات</h3>
-                    <p class="text-lg text-slate-500 leading-relaxed mb-12" data-i18n="skills-desc">أمتلك مهارات تقنية متنوعة تشمل لغات البرمجة، تقنيات الويب، وقواعد البيانات، مع تركيز دائم على الجودة والأمان.</p>
-                    
-                    <div class="space-y-8">
-                        <!-- Skill 1 -->
-                        <div>
-                            <div class="flex justify-between mb-3">
-                                <span class="font-bold text-dark">Frontend Development (html , css , javascript , Tailwind)</span>
-                                <span class="text-primary font-black">80%</span>
-                            </div>
-                            <div class="h-3 bg-slate-100 rounded-full overflow-hidden">
-                                <div class="progress-bar h-full bg-primary rounded-full" data-width="80%"></div>
-                            </div>
-                        </div>
-                        <!-- Skill 2 -->
-                        <div>
-                            <div class="flex justify-between mb-3">
-                                <span class="font-bold text-dark">Backend Development (Node.js, express , database ,C#)</span>
-                                <span class="text-primary font-black">70%</span>
-                            </div>
-                            <div class="h-3 bg-slate-100 rounded-full overflow-hidden">
-                                <div class="progress-bar h-full bg-primary rounded-full" data-width="70%"></div>
-                            </div>
-                        </div>
-                        <!-- Skill 3 -->
-                        <div>
-                            <div class="flex justify-between mb-3">
-                                <span class="font-bold text-dark">Cybersecurity & Protection / linux / python
-                                </span>
-                                <span class="text-primary font-black">75%</span>
-                            </div>
-                            <div class="h-3 bg-slate-100 rounded-full overflow-hidden">
-                                <div class="progress-bar h-full bg-primary rounded-full" data-width="75%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-2 gap-6 reveal" style="transition-delay: 0.2s;">
-                    <div class="bg-slate-50 p-8 rounded-[2.5rem] text-center hover-card border border-slate-100">
-                        <div class="w-16 h-16 bg-white shadow-sm rounded-2xl flex items-center justify-center mx-auto mb-6">
-                            <i data-lucide="code-2" class="w-8 h-8 text-blue-600"></i>
-                        </div>
-                        <h5 class="font-bold text-dark">Clean Code</h5>
-                    </div>
-                    <div class="bg-slate-50 p-8 rounded-[2.5rem] text-center hover-card border border-slate-100 mt-12">
-                        <div class="w-16 h-16 bg-white shadow-sm rounded-2xl flex items-center justify-center mx-auto mb-6">
-                            <i data-lucide="database" class="w-8 h-8 text-emerald-600"></i>
-                        </div>
-                        <h5 class="font-bold text-dark">Databases</h5>
-                    </div>
-                    <div class="bg-slate-50 p-8 rounded-[2.5rem] text-center hover-card border border-slate-100">
-                        <div class="w-16 h-16 bg-white shadow-sm rounded-2xl flex items-center justify-center mx-auto mb-6">
-                            <i data-lucide="globe" class="w-8 h-8 text-purple-600"></i>
-                        </div>
-                        <h5 class="font-bold text-dark">Web Apps</h5>
-                    </div>
-                    <div class="bg-slate-50 p-8 rounded-[2.5rem] text-center hover-card border border-slate-100 mt-12">
-                        <div class="w-16 h-16 bg-white shadow-sm rounded-2xl flex items-center justify-center mx-auto mb-6">
-                            <i data-lucide="server" class="w-8 h-8 text-red-600"></i>
-                        </div>
-                        <h5 class="font-bold text-dark">Hosting</h5>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer / Contact Section -->
-    <footer id="contact" class="bg-dark pt-32 pb-12 text-white relative overflow-hidden">
-        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-20"></div>
-        
-        <div class="container mx-auto px-6">
-            <div class="max-w-4xl mx-auto text-center mb-24 reveal">
-                <h2 class="text-primary font-bold tracking-widest uppercase text-sm mb-6" data-i18n="footer-badge">دعنا نبدأ الرحلة</h2>
-                <h3 class="text-5xl md:text-7xl font-black font-heading mb-12" data-i18n="footer-title">هل لديك مشروع عظيم في ذهنك؟</h3>
-                <a href="mailto:funika947@gmail.com" class="inline-flex items-center space-x-reverse space-x-4 ltr:space-x-4 bg-primary text-white px-12 py-5 rounded-2xl font-bold text-xl hover:bg-blue-700 transition-all shadow-2xl shadow-blue-500/20">
-                    <span data-i18n="footer-btn">تواصل معي الآن</span>
-                    <i data-lucide="mail" class="w-6 h-6"></i>
                 </a>
+
+                <div class="hidden items-center gap-7 lg:flex">
+                    <a class="nav-item" href="#about" data-i18n="nav-about">About</a>
+                    <a class="nav-item" href="#projects" data-i18n="nav-projects">Projects</a>
+                    <a class="nav-item" href="#services" data-i18n="nav-services">Services</a>
+                    <a class="nav-item" href="#skills" data-i18n="nav-skills">Skills</a>
+                    <select id="lang-select" class="lang-switch" aria-label="Select language">
+                        <option value="en">English</option>
+                        <option value="tr">Türkçe</option>
+                        <option value="ar">العربية</option>
+                    </select>
+                    <a href="#contact" class="button-primary !min-h-0 !px-5 !py-2.5" data-i18n="nav-contact">Contact Me</a>
+                </div>
+
+                <button id="menu-btn" class="grid h-11 w-11 place-items-center rounded-full border border-white/10 text-cream lg:hidden" type="button" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false">
+                    <i data-lucide="menu" class="h-5 w-5"></i>
+                </button>
             </div>
+        </nav>
 
-            <div class="flex flex-col md:flex-row justify-between items-center pt-12 border-t border-slate-800 gap-8">
-                <div class="text-2xl font-black font-heading">
-                    <span class="text-primary">محمد</span> يوسف
+        <div id="mobile-menu" class="fixed inset-0 z-[60] bg-[#03130f]/95 px-6 py-8 backdrop-blur-xl lg:hidden" aria-hidden="true">
+            <div class="mx-auto flex h-full max-w-lg flex-col">
+                <div class="flex items-center justify-between">
+                    <span class="display-font text-3xl font-bold"><span data-i18n="nav-name">Muhammed</span> <span class="text-gold" data-i18n="nav-surname">Yusuf</span></span>
+                    <button id="close-btn" class="grid h-11 w-11 place-items-center rounded-full border border-white/10" type="button" aria-label="Close menu">
+                        <i data-lucide="x" class="h-6 w-6"></i>
+                    </button>
                 </div>
-                
-                <div class="flex gap-8">
-                    <a href="https://wa.me/+905013584744" target="_blank" class="social-btn text-slate-400 hover:text-whatsapp">
-                        <i data-lucide="message-circle" class="w-6 h-6"></i>
-                    </a>
-                    <a href="https://linkedin.com/in/muhammed-youssef-6a86b6248" target="_blank" class="social-btn text-slate-400 hover:text-linkedin">
-                        <i data-lucide="linkedin" class="w-6 h-6"></i>
-                    </a>
-                    <a href="mailto:contact@muhammedyusuf.com" class="social-btn text-slate-400 hover:text-email">
-                        <i data-lucide="mail" class="w-6 h-6"></i>
-                    </a>
-                </div>
-
-                <div class="text-slate-500 font-bold text-sm">
-                    &copy; 2026 <span data-i18n="footer-copy">محمد يوسف. جميع الحقوق محفوظة.</span>
+                <div class="flex flex-1 flex-col items-center justify-center gap-7">
+                    <a href="#about" class="mobile-nav-link display-font text-4xl font-bold" data-i18n="nav-about">About</a>
+                    <a href="#projects" class="mobile-nav-link display-font text-4xl font-bold" data-i18n="nav-projects">Projects</a>
+                    <a href="#services" class="mobile-nav-link display-font text-4xl font-bold" data-i18n="nav-services">Services</a>
+                    <a href="#skills" class="mobile-nav-link display-font text-4xl font-bold" data-i18n="nav-skills">Skills</a>
+                    <a href="#contact" class="mobile-nav-link display-font text-4xl font-bold text-gold" data-i18n="nav-contact">Contact Me</a>
+                    <select id="lang-select-mobile" class="lang-switch mt-4" aria-label="Select language">
+                        <option value="en">English</option>
+                        <option value="tr">Türkçe</option>
+                        <option value="ar">العربية</option>
+                    </select>
                 </div>
             </div>
         </div>
-    </footer>
+
+        <main id="main-content">
+            <section id="about" class="hero">
+                <div class="botanical-orbit right-[7%] top-[22%] hidden lg:block" aria-hidden="true"></div>
+                <div class="container-wide relative z-10">
+                    <div class="grid items-center gap-14 lg:grid-cols-[1.08fr_.92fr]">
+                        <div class="reveal active">
+                            <div class="hero-kicker">
+                                <span class="h-2 w-2 rounded-full bg-gold shadow-[0_0_0_5px_rgba(231,189,85,.12)]"></span>
+                                <span data-i18n="hero-badge">Available for new projects in 2026</span>
+                            </div>
+                            <h1 class="hero-title display-font">
+                                <span data-i18n="hero-name">Muhammed Yusuf</span>
+                                <span class="accent block text-[.63em] leading-[1.05]" data-i18n="hero-title">Computer Engineer & Web Developer</span>
+                            </h1>
+                            <p class="hero-description" data-i18n="hero-desc">
+                                I build secure, responsive, and user-focused digital products by combining computer engineering, web development, and practical cybersecurity experience.
+                            </p>
+                            <div class="mt-8 flex flex-wrap gap-3">
+                                <a href="#projects" class="button-primary">
+                                    <span data-i18n="hero-btn-work">View My Work</span>
+                                    <i data-lucide="arrow-up-right" class="h-4 w-4"></i>
+                                </a>
+                                <a href="#contact" class="button-secondary">
+                                    <i data-lucide="message-circle" class="h-4 w-4"></i>
+                                    <span data-i18n="hero-btn-talk">Let's Talk</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="portrait-shell reveal" style="transition-delay: .12s">
+                            <div class="portrait-frame">
+                                <div class="portrait-fallback" aria-hidden="true">MY</div>
+                                <img src="muhammed.png.png" alt="Muhammed Yusuf" onerror="this.remove()">
+                            </div>
+                            <div class="floating-note top">
+                                <span class="floating-note-icon"><i data-lucide="shield-check" class="h-5 w-5"></i></span>
+                                <div>
+                                    <p class="text-[.65rem] font-bold uppercase tracking-[.12em] text-cream/45" data-i18n="focus-label">Focus area</p>
+                                    <p class="text-sm font-extrabold text-cream" data-i18n="focus-value">Offensive Security</p>
+                                </div>
+                            </div>
+                            <div class="floating-note bottom">
+                                <span class="floating-note-icon"><i data-lucide="badge-check" class="h-5 w-5"></i></span>
+                                <div>
+                                    <p class="text-[.65rem] font-bold uppercase tracking-[.12em] text-cream/45">eJPT</p>
+                                    <p class="text-sm font-extrabold text-cream" data-i18n="ejpt-status">Certified</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hero-info-card reveal">
+                        <div class="relative z-10 grid gap-5 md:grid-cols-[1.3fr_.7fr_.7fr] md:items-center">
+                            <div class="flex items-center gap-4">
+                                <div class="grid h-14 w-14 flex-none place-items-center rounded-full border border-gold/25 bg-gold/10 text-gold">
+                                    <i data-lucide="sprout" class="h-6 w-6"></i>
+                                </div>
+                                <div>
+                                    <p class="display-font text-2xl font-bold" data-i18n="profile-role">Engineering, development, and security in one portfolio.</p>
+                                    <p class="mt-1 text-sm text-cream/55" data-i18n="profile-location">Based in Türkiye · Open to remote and hybrid projects</p>
+                                </div>
+                            </div>
+                            <div class="metric">
+                                <p class="display-font text-4xl font-bold text-gold">6+</p>
+                                <p class="text-xs font-bold uppercase tracking-[.1em] text-cream/45" data-i18n="stat-projects">Projects completed</p>
+                            </div>
+                            <div class="metric">
+                                <p class="display-font text-4xl font-bold text-gold">15%</p>
+                                <p class="text-xs font-bold uppercase tracking-[.1em] text-cream/45" data-i18n="stat-ranking">TryHackMe global rank</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="projects" class="section bg-[#041712]">
+                <div class="container-wide">
+                    <div class="mb-12 grid gap-7 lg:grid-cols-[.8fr_1.2fr] lg:items-end">
+                        <div class="reveal">
+                            <span class="section-kicker"><i data-lucide="folder-kanban" class="h-4 w-4"></i><span data-i18n="projects-badge">Selected Work</span></span>
+                            <h2 class="section-heading display-font" data-i18n="projects-title">Where ideas become useful digital products.</h2>
+                        </div>
+                        <p class="section-copy max-w-2xl reveal lg:justify-self-end" data-i18n="projects-intro">
+                            A selection of education, commerce, and interactive web projects designed around clarity, performance, and real user needs.
+                        </p>
+                    </div>
+
+                    <div class="grid gap-7 lg:grid-cols-2">
+                        <article class="project-card reveal">
+                            <div class="browser-bar"><span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span><span class="ms-auto text-[.65rem] font-bold uppercase tracking-[.12em] text-cream/35">Full Stack Platform</span></div>
+                            <div class="iframe-container"><iframe src="https://rikazalelim.com" title="Rikaz Educational Platform" loading="lazy"></iframe></div>
+                            <div class="p-6 md:p-7">
+                                <div class="mb-4 flex items-start justify-between gap-4">
+                                    <h3 class="display-font text-3xl font-bold" data-i18n="project-1-title">Rikaz Educational Platform</h3>
+                                    <a href="https://rikazalelim.com" target="_blank" rel="noopener noreferrer" class="grid h-10 w-10 flex-none place-items-center rounded-full border border-gold/20 text-gold transition hover:bg-gold hover:text-forest" aria-label="Open Rikaz Educational Platform"><i data-lucide="arrow-up-right" class="h-4 w-4"></i></a>
+                                </div>
+                                <p class="text-sm leading-7 text-cream/55" data-i18n="project-1-desc">A full-stack learning platform for managing courses, users, content, and administration through a dynamic dashboard.</p>
+                                <div class="mt-5 flex flex-wrap gap-2"><span class="project-tag">Node.js</span><span class="project-tag">Database</span><span class="project-tag">Dashboard</span></div>
+                            </div>
+                        </article>
+
+                        <article class="project-card reveal" style="transition-delay: .08s">
+                            <div class="browser-bar"><span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span><span class="ms-auto text-[.65rem] font-bold uppercase tracking-[.12em] text-cream/35">Web Application</span></div>
+                            <div class="iframe-container"><iframe src="https://modyhub.github.io/digital-menu-v2/index.html" title="Digital Menu System" loading="lazy"></iframe></div>
+                            <div class="p-6 md:p-7">
+                                <div class="mb-4 flex items-start justify-between gap-4">
+                                    <h3 class="display-font text-3xl font-bold" data-i18n="project-2-title">Digital Menu System</h3>
+                                    <a href="https://modyhub.github.io/digital-menu-v2/index.html" target="_blank" rel="noopener noreferrer" class="grid h-10 w-10 flex-none place-items-center rounded-full border border-gold/20 text-gold transition hover:bg-gold hover:text-forest" aria-label="Open Digital Menu System"><i data-lucide="arrow-up-right" class="h-4 w-4"></i></a>
+                                </div>
+                                <p class="text-sm leading-7 text-cream/55" data-i18n="project-2-desc">A responsive web application for presenting restaurant menus, offers, and products through a modern interface.</p>
+                                <div class="mt-5 flex flex-wrap gap-2"><span class="project-tag">Tailwind CSS</span><span class="project-tag">JavaScript</span><span class="project-tag">Responsive</span></div>
+                            </div>
+                        </article>
+
+                        <article class="project-card reveal">
+                            <div class="browser-bar"><span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span><span class="ms-auto text-[.65rem] font-bold uppercase tracking-[.12em] text-cream/35">E-Learning</span></div>
+                            <div class="iframe-container"><iframe src="https://www.rikaz.academy/" title="Rikaz Quran Platform" loading="lazy"></iframe></div>
+                            <div class="p-6 md:p-7">
+                                <div class="mb-4 flex items-start justify-between gap-4">
+                                    <h3 class="display-font text-3xl font-bold" data-i18n="project-3-title">Rikaz Quran Platform</h3>
+                                    <a href="https://www.rikaz.academy/" target="_blank" rel="noopener noreferrer" class="grid h-10 w-10 flex-none place-items-center rounded-full border border-gold/20 text-gold transition hover:bg-gold hover:text-forest" aria-label="Open Rikaz Quran Platform"><i data-lucide="arrow-up-right" class="h-4 w-4"></i></a>
+                                </div>
+                                <p class="text-sm leading-7 text-cream/55" data-i18n="project-3-desc">A multilingual online platform for Quran and Arabic education, including memorization, Tajweed, and specialized programs.</p>
+                                <div class="mt-5 flex flex-wrap gap-2"><span class="project-tag">Education</span><span class="project-tag">React</span><span class="project-tag">Multilingual</span></div>
+                            </div>
+                        </article>
+
+                        <article class="project-card reveal" style="transition-delay: .08s">
+                            <div class="browser-bar"><span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span><span class="ms-auto text-[.65rem] font-bold uppercase tracking-[.12em] text-cream/35">E-Commerce UI</span></div>
+                            <div class="iframe-container"><iframe src="https://www.nazperfume.com/" title="NAZ Parfüm Store" loading="lazy"></iframe></div>
+                            <div class="p-6 md:p-7">
+                                <div class="mb-4 flex items-start justify-between gap-4">
+                                    <h3 class="display-font text-3xl font-bold" data-i18n="project-4-title">NAZ Parfüm Store</h3>
+                                    <a href="https://www.nazperfume.com/" target="_blank" rel="noopener noreferrer" class="grid h-10 w-10 flex-none place-items-center rounded-full border border-gold/20 text-gold transition hover:bg-gold hover:text-forest" aria-label="Open NAZ Parfüm Store"><i data-lucide="arrow-up-right" class="h-4 w-4"></i></a>
+                                </div>
+                                <p class="text-sm leading-7 text-cream/55" data-i18n="project-4-desc">An elegant perfume showcase website focused on brand identity, product presentation, and social media integration.</p>
+                                <div class="mt-5 flex flex-wrap gap-2"><span class="project-tag">Branding</span><span class="project-tag">UI/UX</span><span class="project-tag">Landing Page</span></div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <div class="tech-band" aria-label="Technologies">
+                <div class="tech-track">
+                    <span class="tech-item"><i data-lucide="code-2" class="h-4 w-4"></i>HTML & CSS</span>
+                    <span class="tech-item"><i data-lucide="braces" class="h-4 w-4"></i>JavaScript</span>
+                    <span class="tech-item"><i data-lucide="server" class="h-4 w-4"></i>Node.js</span>
+                    <span class="tech-item"><i data-lucide="database" class="h-4 w-4"></i>Databases</span>
+                    <span class="tech-item"><i data-lucide="terminal" class="h-4 w-4"></i>Linux</span>
+                    <span class="tech-item"><i data-lucide="shield" class="h-4 w-4"></i>Cybersecurity</span>
+                    <span class="tech-item"><i data-lucide="code-2" class="h-4 w-4"></i>HTML & CSS</span>
+                    <span class="tech-item"><i data-lucide="braces" class="h-4 w-4"></i>JavaScript</span>
+                    <span class="tech-item"><i data-lucide="server" class="h-4 w-4"></i>Node.js</span>
+                    <span class="tech-item"><i data-lucide="database" class="h-4 w-4"></i>Databases</span>
+                    <span class="tech-item"><i data-lucide="terminal" class="h-4 w-4"></i>Linux</span>
+                    <span class="tech-item"><i data-lucide="shield" class="h-4 w-4"></i>Cybersecurity</span>
+                </div>
+            </div>
+
+            <section id="services" class="section">
+                <div class="container-wide">
+                    <div class="mx-auto mb-12 max-w-3xl text-center reveal">
+                        <span class="section-kicker mx-auto"><i data-lucide="sparkles" class="h-4 w-4"></i><span data-i18n="services-badge">Technical Services</span></span>
+                        <h2 class="section-heading display-font mx-auto !max-w-[16ch]" data-i18n="services-title">Services shaped around useful outcomes.</h2>
+                        <p class="section-copy mx-auto mt-5 max-w-2xl" data-i18n="services-desc">End-to-end digital solutions, from planning and design to development, security, and launch.</p>
+                    </div>
+
+                    <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+                        <article class="service-card reveal">
+                            <div class="icon-leaf"><i data-lucide="layout-template" class="h-7 w-7"></i></div>
+                            <div class="mt-auto pt-12">
+                                <span class="text-xs font-black uppercase tracking-[.16em] text-gold/65">01</span>
+                                <h3 class="display-font mt-3 text-3xl font-bold" data-i18n="service-1-title">Web Development</h3>
+                                <p class="mt-4 text-sm leading-7 text-cream/50" data-i18n="service-1-desc">Professional, responsive, and high-performance websites built with modern technologies.</p>
+                            </div>
+                        </article>
+                        <article class="service-card reveal" style="transition-delay: .06s">
+                            <div class="icon-leaf"><i data-lucide="shield-check" class="h-7 w-7"></i></div>
+                            <div class="mt-auto pt-12">
+                                <span class="text-xs font-black uppercase tracking-[.16em] text-gold/65">02</span>
+                                <h3 class="display-font mt-3 text-3xl font-bold" data-i18n="service-2-title">Cybersecurity</h3>
+                                <p class="mt-4 text-sm leading-7 text-cream/50" data-i18n="service-2-desc">Security reviews, vulnerability analysis, and practical protection solutions for websites and systems.</p>
+                            </div>
+                        </article>
+                        <article class="service-card reveal" style="transition-delay: .12s">
+                            <div class="icon-leaf"><i data-lucide="smartphone" class="h-7 w-7"></i></div>
+                            <div class="mt-auto pt-12">
+                                <span class="text-xs font-black uppercase tracking-[.16em] text-gold/65">03</span>
+                                <h3 class="display-font mt-3 text-3xl font-bold" data-i18n="service-3-title">Application Development</h3>
+                                <p class="mt-4 text-sm leading-7 text-cream/50" data-i18n="service-3-desc">Modern and easy-to-use applications designed around your business and user needs.</p>
+                            </div>
+                        </article>
+                        <article class="service-card reveal" style="transition-delay: .18s">
+                            <div class="icon-leaf"><i data-lucide="gauge" class="h-7 w-7"></i></div>
+                            <div class="mt-auto pt-12">
+                                <span class="text-xs font-black uppercase tracking-[.16em] text-gold/65">04</span>
+                                <h3 class="display-font mt-3 text-3xl font-bold" data-i18n="service-4-title">Performance Optimization</h3>
+                                <p class="mt-4 text-sm leading-7 text-cream/50" data-i18n="service-4-desc">Speed, usability, and technical improvements for smoother digital experiences.</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section id="skills" class="section bg-[#041712]">
+                <div class="container-wide">
+                    <div class="mb-12 grid gap-7 lg:grid-cols-[.8fr_1.2fr] lg:items-end">
+                        <div class="reveal">
+                            <span class="section-kicker"><i data-lucide="leaf" class="h-4 w-4"></i><span data-i18n="skills-badge">Technical Capabilities</span></span>
+                            <h2 class="section-heading display-font" data-i18n="skills-title">Skills that grow through practical work.</h2>
+                        </div>
+                        <p class="section-copy max-w-2xl reveal lg:justify-self-end" data-i18n="skills-desc">A balanced technical background in frontend, backend, databases, Linux, Python, and cybersecurity.</p>
+                    </div>
+
+                    <div class="grid gap-7 lg:grid-cols-[1.15fr_.85fr]">
+                        <div class="skill-panel reveal">
+                            <div class="skill-row">
+                                <div class="mb-3 flex items-center justify-between gap-4"><span class="font-extrabold" data-i18n="skill-front">Frontend Development</span><span class="font-extrabold text-gold">80%</span></div>
+                                <p class="mb-4 text-xs font-semibold uppercase tracking-[.08em] text-cream/40">HTML · CSS · JavaScript · Tailwind CSS</p>
+                                <div class="skill-track"><div class="skill-fill" data-width="80%" style="--target-width:80%"></div></div>
+                            </div>
+                            <div class="skill-row">
+                                <div class="mb-3 flex items-center justify-between gap-4"><span class="font-extrabold" data-i18n="skill-back">Backend Development</span><span class="font-extrabold text-gold">70%</span></div>
+                                <p class="mb-4 text-xs font-semibold uppercase tracking-[.08em] text-cream/40">Node.js · Express · Databases · C#</p>
+                                <div class="skill-track"><div class="skill-fill" data-width="70%" style="--target-width:70%"></div></div>
+                            </div>
+                            <div class="skill-row">
+                                <div class="mb-3 flex items-center justify-between gap-4"><span class="font-extrabold" data-i18n="skill-cyber">Cybersecurity & Systems</span><span class="font-extrabold text-gold">75%</span></div>
+                                <p class="mb-4 text-xs font-semibold uppercase tracking-[.08em] text-cream/40">Linux · Python · Networking · Security Tools</p>
+                                <div class="skill-track"><div class="skill-fill" data-width="75%" style="--target-width:75%"></div></div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4 reveal" style="transition-delay: .08s">
+                            <div class="capability-card"><i data-lucide="code-2" class="h-7 w-7 text-gold"></i><h3 class="display-font text-2xl font-bold" data-i18n="tile-code">Clean Code</h3></div>
+                            <div class="capability-card md:translate-y-5"><i data-lucide="database" class="h-7 w-7 text-gold"></i><h3 class="display-font text-2xl font-bold" data-i18n="tile-db">Databases</h3></div>
+                            <div class="capability-card"><i data-lucide="globe-2" class="h-7 w-7 text-gold"></i><h3 class="display-font text-2xl font-bold" data-i18n="tile-web">Web Applications</h3></div>
+                            <div class="capability-card md:translate-y-5"><i data-lucide="server-cog" class="h-7 w-7 text-gold"></i><h3 class="display-font text-2xl font-bold" data-i18n="tile-host">Deployment</h3></div>
+                        </div>
+                    </div>
+
+                    <div class="cyber-stage mt-14 reveal">
+                        <div class="relative z-10">
+                            <div class="mb-9 grid gap-7 lg:grid-cols-[1fr_auto] lg:items-end">
+                                <div>
+                                    <span class="section-kicker"><i data-lucide="shield-check" class="h-4 w-4"></i><span data-i18n="cyber-kicker">CYBERSECURITY</span></span>
+                                    <h3 class="display-font mt-5 max-w-4xl text-4xl font-bold leading-[.98] md:text-6xl" data-i18n="cyber-title">Cybersecurity Certifications & Practical Experience</h3>
+                                    <p class="mt-5 max-w-3xl text-cream/55" data-i18n="cyber-desc">Hands-on experience in penetration testing, Linux, networking, enumeration, vulnerability analysis, and security labs.</p>
+                                </div>
+                                <div class="rounded-2xl border border-gold/20 bg-gold/5 px-5 py-4">
+                                    <p class="text-[.65rem] font-black uppercase tracking-[.16em] text-gold/60" data-i18n="focus-label">Focus area</p>
+                                    <p class="mt-1 font-extrabold" data-i18n="focus-value">Offensive Security</p>
+                                </div>
+                            </div>
+
+                            <div class="grid gap-5 md:grid-cols-3">
+                                <article class="achievement-card">
+                                    <span class="achievement-number">01</span>
+                                    <div class="grid h-14 w-14 place-items-center rounded-full bg-gold text-forest"><i data-lucide="badge-check" class="h-7 w-7"></i></div>
+                                    <h4 class="display-font mt-7 text-4xl font-bold">eJPT</h4>
+                                    <p class="mt-1 font-bold text-gold" data-i18n="ejpt-sub">Junior Penetration Tester</p>
+                                    <div class="mt-6 space-y-3 text-sm text-cream/50"><p class="flex gap-2"><i data-lucide="check" class="mt-1 h-4 w-4 flex-none text-gold"></i><span data-i18n="ejpt-p1">Penetration testing fundamentals</span></p><p class="flex gap-2"><i data-lucide="check" class="mt-1 h-4 w-4 flex-none text-gold"></i><span data-i18n="ejpt-p2">Enumeration and exploitation</span></p></div>
+                                </article>
+                                <article class="achievement-card">
+                                    <span class="achievement-number">02</span>
+                                    <div class="grid h-14 w-14 place-items-center rounded-full bg-gold text-forest"><i data-lucide="trophy" class="h-7 w-7"></i></div>
+                                    <h4 class="display-font mt-7 text-4xl font-bold">TryHackMe</h4>
+                                    <p class="mt-1 font-bold text-gold" data-i18n="thm-sub">Top 15% Global Ranking</p>
+                                    <div class="mt-6 space-y-3 text-sm text-cream/50"><p class="flex gap-2"><i data-lucide="check" class="mt-1 h-4 w-4 flex-none text-gold"></i><span data-i18n="thm-p1">Hands-on security labs</span></p><p class="flex gap-2"><i data-lucide="check" class="mt-1 h-4 w-4 flex-none text-gold"></i><span data-i18n="thm-p2">Web, Linux, and networking practice</span></p></div>
+                                </article>
+                                <article class="achievement-card">
+                                    <span class="achievement-number">03</span>
+                                    <div class="grid h-14 w-14 place-items-center rounded-full bg-gold text-forest"><i data-lucide="terminal-square" class="h-7 w-7"></i></div>
+                                    <h4 class="display-font mt-7 text-4xl font-bold" data-i18n="lab-title">Security Labs</h4>
+                                    <p class="mt-1 font-bold text-gold" data-i18n="lab-sub">Practical Security Training</p>
+                                    <div class="mt-6 space-y-3 text-sm text-cream/50"><p class="flex gap-2"><i data-lucide="check" class="mt-1 h-4 w-4 flex-none text-gold"></i><span data-i18n="lab-p1">Linux, Python, and security tools</span></p><p class="flex gap-2"><i data-lucide="check" class="mt-1 h-4 w-4 flex-none text-gold"></i><span data-i18n="lab-p2">Network and vulnerability analysis</span></p></div>
+                                </article>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact" class="section">
+                <div class="container-wide">
+                    <div class="contact-card reveal">
+                        <div class="relative z-10 max-w-4xl">
+                            <span class="section-kicker"><i data-lucide="send" class="h-4 w-4"></i><span data-i18n="footer-badge">Let's Work Together</span></span>
+                            <h2 class="display-font mt-6 max-w-[12ch] text-5xl font-bold leading-[.9] md:text-7xl" data-i18n="footer-title">Have a project in mind?</h2>
+                            <p class="mt-6 max-w-2xl text-cream/55" data-i18n="footer-desc">Tell me what you want to build, improve, or secure. I will reply with a clear next step.</p>
+                            <div class="mt-8 flex flex-wrap gap-3">
+                                <a href="mailto:funika947@gmail.com" class="button-primary"><span data-i18n="footer-btn">Contact Me Now</span><i data-lucide="mail" class="h-4 w-4"></i></a>
+                                <a href="https://wa.me/905013584744" target="_blank" rel="noopener noreferrer" class="button-secondary"><i data-lucide="message-circle" class="h-4 w-4"></i>WhatsApp</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <footer class="flex flex-col items-center justify-between gap-6 py-10 text-center md:flex-row md:text-start">
+                        <div class="display-font text-2xl font-bold"><span data-i18n="nav-name">Muhammed</span> <span class="text-gold" data-i18n="nav-surname">Yusuf</span></div>
+                        <div class="flex gap-3">
+                            <a class="social-link" href="https://wa.me/905013584744" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i data-lucide="message-circle" class="h-5 w-5"></i></a>
+                            <a class="social-link" href="https://linkedin.com/in/muhammed-youssef-6a86b6248" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i data-lucide="linkedin" class="h-5 w-5"></i></a>
+                            <a class="social-link" href="mailto:contact@muhammedyusuf.com" aria-label="Email"><i data-lucide="mail" class="h-5 w-5"></i></a>
+                        </div>
+                        <p class="text-xs font-semibold text-cream/35">&copy; 2026 <span data-i18n="footer-copy">Muhammed Yusuf. All rights reserved.</span></p>
+                    </footer>
+                </div>
+            </section>
+        </main>
+    </div>
 
     <script>
         const translations = {
-            ar: {
-                "nav-name": "محمد",
-                "nav-surname": "يوسف",
-                "nav-about": "عني",
-                "nav-services": "الخدمات",
-                "nav-projects": "المشاريع",
-                "nav-skills": "المهارات",
-                "nav-contact": "تواصل معي",
-                "hero-badge": "متاح لمشاريع جديدة لعام 2026",
-                "hero-name": "محمد يوسف",
-                "hero-title": "مهندس حاسوب | مطور مواقع",
-                "hero-desc": "مرحباً! أنا محمد يوسف، مهندس حاسوب متخصص في تطوير تطبيقات الويب والتطبيقات الذكية. أجمع بين هندسة النظم وتطوير الويب لتقديم حلول رقمية آمنة، سريعة، وجميلة. شغفي هو تحويل الأفكار المعقدة إلى واقع ملموس.",
-                "hero-btn-work": "استعرض أعمالي",
-                "hero-btn-talk": "دعنا نتحدث",
-                "stat-projects": "مشروع مكتمل",
-                "stat-experience": "سنوات خبرة",
-                "services-badge": "خدماتي التقنية",
-                "services-title": "ماذا أقدم لعملائي؟",
-                "services-desc": "حلول متكاملة تبدأ من الفكرة وتستمر حتى الإطلاق، مع التركيز على أعلى معايير الجودة والأمان.",
-                "service-1-title": "تطوير مواقع الويب",
-                "service-1-desc": "بناء مواقع ويب احترافية وسريعة باستخدام أحدث التقنيات لضمان تجربة مستخدم ممتازة.",
-                "service-2-title": "حماية النظم",
-                "service-2-desc": "تقديم استشارات أمان شاملة وحلول حماية متقدمة لضمان سلامة بياناتك وأنظمتك.",
-                "service-3-title": "تطوير التطبيقات",
-                "service-3-desc": "تطوير تطبيقات ذكية وسهلة الاستخدام تلبي احتياجاتك الرقمية والإنتاجية.",
-                "service-4-title": "تحسين الأداء",
-                "service-4-desc": "تحسين سرعة وأداء المواقع والتطبيقات لتجربة مستخدم سلسة وخالية من التأخير.",
-                "projects-badge": "معرض الأعمال",
-                "projects-title": "مشاريع تقنية مبتكرة",
-                "project-1-title": "منصة الركاز التعليمية",
-                "project-1-desc": "منصة تعليمية متكاملة لإدارة الدورات والمستخدمين والمحتوى، مع لوحة تحكم ديناميكية ونظام إدارة متكامل باستخدام Node.js وقاعدة بيانات.",
-                "project-2-title": "نظام القائمة الرقمية للمطاعم",
-                "project-2-desc": "تطبيق ويب تفاعلي لعرض قوائم الطعام بطريقة حديثة، يتيح تصفح الوجبات والعروض بسهولة مع تجربة مستخدم جذابة.",
-                "project-3-title": "منصة ركاز القرآن",
-                "project-3-desc": "منصة تعليمية متخصصة لتعليم القرآن الكريم واللغة العربية عن بعد، تشمل برامج تحفيظ، تجويد، إجازات، ودورات متنوعة.",
-                "project-4-title": "متجر NAZ Parfüm",
-                "project-4-desc": "موقع احترافي لعرض العطور الفاخرة بتصميم أنيق يعكس هوية العلامة التجارية مع تكامل وسائل التواصل.",
-                "project-btn-open": "فتح المشروع",
-                "skills-badge": "القدرات التقنية",
-                "skills-title": "المهارات والخبرات",
-                "skills-desc": "أمتلك مهارات تقنية متنوعة تشمل لغات البرمجة، تقنيات الويب، وقواعد البيانات، مع تركيز دائم على الجودة والأمان.",
-                "footer-badge": "دعنا نبدأ الرحلة",
-                "footer-title": "هل لديك مشروع عظيم في ذهنك؟",
-                "footer-btn": "تواصل معي الآن",
-                "footer-copy": "محمد يوسف. جميع الحقوق محفوظة.",
-                "footer-privacy": "الخصوصية",
-                "footer-terms": "الشروط",
-                "footer-blog": "المدونة"
-            },
             en: {
-                "nav-name": "Muhammed",
-                "nav-surname": "Yusuf",
-                "nav-about": "About",
-                "nav-services": "Services",
-                "nav-projects": "Projects",
-                "nav-skills": "Skills",
-                "nav-contact": "Contact Me",
-                "hero-badge": "Available for new projects 2026",
-                "hero-name": "Muhammed Yusuf",
-                "hero-title": "Computer Engineer | Web Developer",
-                "hero-desc": "Hello! I am Muhammed Yusuf, a Computer Engineer specialized in web and smart application development. I combine system engineering with web development to deliver secure, fast, and beautiful digital solutions. My passion is turning complex ideas into reality.",
-                "hero-btn-work": "View My Work",
-                "hero-btn-talk": "Let's Talk",
-                "stat-projects": "Projects Completed",
-                "stat-experience": "Years Experience",
-                "services-badge": "Technical Services",
-                "services-title": "What I Offer?",
-                "services-desc": "Integrated solutions starting from idea to launch, focusing on the highest standards of quality and security.",
-                "service-1-title": "Web Development",
-                "service-1-desc": "Building professional and fast websites using the latest technologies to ensure an excellent user experience.",
-                "service-2-title": "System Security",
-                "service-2-desc": "Providing comprehensive security consultations and advanced protection solutions to ensure the safety of your data and systems.",
-                "service-3-title": "App Development",
-                "service-3-desc": "Developing smart and easy-to-use applications that meet your digital and productivity needs.",
-                "service-4-title": "Performance Optimization",
-                "service-4-desc": "Improving the speed and performance of websites and applications for a smooth user experience without delay.",
-                "projects-badge": "Portfolio",
-                "projects-title": "Innovative Tech Projects",
-                "project-1-title": "Rikaz Educational Platform",
-                "project-1-desc": "An integrated educational platform for managing courses, users, and content, with a dynamic dashboard and integrated management system using Node.js and a database.",
-                "project-2-title": "Digital Menu System",
-                "project-2-desc": "An interactive web application for displaying food menus in a modern way, allowing users to browse meals and offers easily with an attractive user experience.",
-                "project-3-title": "Rikaz Quran Platform",
-                "project-3-desc": "A specialized educational platform for teaching the Holy Quran and Arabic remotely, including memorization programs, Tajweed, and various courses.",
-                "project-4-title": "NAZ Parfüm Store",
-                "project-4-desc": "A professional website for displaying luxury perfumes with an elegant design that reflects the brand identity with social media integration.",
-                "project-btn-open": "Open Project",
-                "skills-badge": "Technical Capabilities",
-                "skills-title": "Skills & Experience",
-                "skills-desc": "I possess diverse technical skills including programming languages, web technologies, and databases, with a constant focus on quality and security.",
-                "footer-badge": "Let's Start the Journey",
-                "footer-title": "Have a Great Project in Mind?",
-                "footer-btn": "Contact Me Now",
-                "footer-copy": "Muhammed Yusuf. All rights reserved.",
-                "footer-privacy": "Privacy",
-                "footer-terms": "Terms",
-                "footer-blog": "Blog"
+                "nav-name": "Muhammed", "nav-surname": "Yusuf", "nav-about": "About", "nav-services": "Services", "nav-projects": "Projects", "nav-skills": "Skills", "nav-contact": "Contact Me",
+                "hero-badge": "Available for new projects in 2026", "hero-name": "Muhammed Yusuf", "hero-title": "Computer Engineer & Web Developer",
+                "hero-desc": "I build secure, responsive, and user-focused digital products by combining computer engineering, web development, and practical cybersecurity experience.",
+                "hero-btn-work": "View My Work", "hero-btn-talk": "Let's Talk", "profile-role": "Engineering, development, and security in one portfolio.", "profile-location": "Based in Türkiye · Open to remote and hybrid projects", "stat-projects": "Projects completed", "stat-ranking": "TryHackMe global rank",
+                "projects-badge": "Selected Work", "projects-title": "Where ideas become useful digital products.", "projects-intro": "A selection of education, commerce, and interactive web projects designed around clarity, performance, and real user needs.",
+                "project-1-title": "Rikaz Educational Platform", "project-1-desc": "A full-stack learning platform for managing courses, users, content, and administration through a dynamic dashboard.",
+                "project-2-title": "Digital Menu System", "project-2-desc": "A responsive web application for presenting restaurant menus, offers, and products through a modern interface.",
+                "project-3-title": "Rikaz Quran Platform", "project-3-desc": "A multilingual online platform for Quran and Arabic education, including memorization, Tajweed, and specialized programs.",
+                "project-4-title": "NAZ Parfüm Store", "project-4-desc": "An elegant perfume showcase website focused on brand identity, product presentation, and social media integration.",
+                "services-badge": "Technical Services", "services-title": "Services shaped around useful outcomes.", "services-desc": "End-to-end digital solutions, from planning and design to development, security, and launch.",
+                "service-1-title": "Web Development", "service-1-desc": "Professional, responsive, and high-performance websites built with modern technologies.",
+                "service-2-title": "Cybersecurity", "service-2-desc": "Security reviews, vulnerability analysis, and practical protection solutions for websites and systems.",
+                "service-3-title": "Application Development", "service-3-desc": "Modern and easy-to-use applications designed around your business and user needs.",
+                "service-4-title": "Performance Optimization", "service-4-desc": "Speed, usability, and technical improvements for smoother digital experiences.",
+                "skills-badge": "Technical Capabilities", "skills-title": "Skills that grow through practical work.", "skills-desc": "A balanced technical background in frontend, backend, databases, Linux, Python, and cybersecurity.",
+                "skill-front": "Frontend Development", "skill-back": "Backend Development", "skill-cyber": "Cybersecurity & Systems", "tile-code": "Clean Code", "tile-db": "Databases", "tile-web": "Web Applications", "tile-host": "Deployment",
+                "cyber-kicker": "CYBERSECURITY", "cyber-title": "Cybersecurity Certifications & Practical Experience", "cyber-desc": "Hands-on experience in penetration testing, Linux, networking, enumeration, vulnerability analysis, and security labs.", "focus-label": "Focus area", "focus-value": "Offensive Security",
+                "ejpt-status": "Certified", "ejpt-sub": "Junior Penetration Tester", "ejpt-p1": "Penetration testing fundamentals", "ejpt-p2": "Enumeration and exploitation",
+                "thm-sub": "Top 15% Global Ranking", "thm-p1": "Hands-on security labs", "thm-p2": "Web, Linux, and networking practice",
+                "lab-title": "Security Labs", "lab-sub": "Practical Security Training", "lab-p1": "Linux, Python, and security tools", "lab-p2": "Network and vulnerability analysis",
+                "footer-badge": "Let's Work Together", "footer-title": "Have a project in mind?", "footer-desc": "Tell me what you want to build, improve, or secure. I will reply with a clear next step.", "footer-btn": "Contact Me Now", "footer-copy": "Muhammed Yusuf. All rights reserved."
+            },
+            tr: {
+                "nav-name": "Muhammed", "nav-surname": "Yusuf", "nav-about": "Hakkımda", "nav-services": "Hizmetler", "nav-projects": "Projeler", "nav-skills": "Yetenekler", "nav-contact": "İletişim",
+                "hero-badge": "2026 için yeni projelere uygun", "hero-name": "Muhammed Yusuf", "hero-title": "Bilgisayar Mühendisi ve Web Geliştirici",
+                "hero-desc": "Bilgisayar mühendisliği, web geliştirme ve uygulamalı siber güvenlik deneyimini birleştirerek güvenli, responsive ve kullanıcı odaklı dijital ürünler geliştiriyorum.",
+                "hero-btn-work": "Projelerimi Gör", "hero-btn-talk": "İletişime Geç", "profile-role": "Mühendislik, yazılım geliştirme ve güvenlik tek portföyde.", "profile-location": "Türkiye'de · Uzaktan ve hibrit projelere açık", "stat-projects": "Tamamlanan proje", "stat-ranking": "TryHackMe dünya sıralaması",
+                "projects-badge": "Seçili Çalışmalar", "projects-title": "Fikirlerin kullanışlı dijital ürünlere dönüştüğü yer.", "projects-intro": "Netlik, performans ve gerçek kullanıcı ihtiyaçları etrafında tasarlanan eğitim, ticaret ve etkileşimli web projelerinden bir seçki.",
+                "project-1-title": "Rikaz Eğitim Platformu", "project-1-desc": "Kursları, kullanıcıları, içerikleri ve yönetim süreçlerini dinamik panel üzerinden yöneten full-stack eğitim platformu.",
+                "project-2-title": "Dijital Menü Sistemi", "project-2-desc": "Restoran menülerini, kampanyaları ve ürünleri modern bir arayüzle sunan responsive web uygulaması.",
+                "project-3-title": "Rikaz Kur'an Platformu", "project-3-desc": "Kur'an ve Arapça eğitimi için ezber, tecvid ve özel programlar içeren çok dilli çevrim içi platform.",
+                "project-4-title": "NAZ Parfüm Mağazası", "project-4-desc": "Marka kimliği, ürün sunumu ve sosyal medya entegrasyonuna odaklanan şık bir parfüm tanıtım sitesi.",
+                "services-badge": "Teknik Hizmetler", "services-title": "Faydalı sonuçlara odaklanan hizmetler.", "services-desc": "Planlama ve tasarımdan geliştirme, güvenlik ve yayına almaya kadar uçtan uca dijital çözümler.",
+                "service-1-title": "Web Geliştirme", "service-1-desc": "Modern teknolojilerle profesyonel, responsive ve yüksek performanslı web siteleri.",
+                "service-2-title": "Siber Güvenlik", "service-2-desc": "Web siteleri ve sistemler için güvenlik incelemeleri, zafiyet analizi ve pratik koruma çözümleri.",
+                "service-3-title": "Uygulama Geliştirme", "service-3-desc": "İşletme ve kullanıcı ihtiyaçlarına göre tasarlanmış modern ve kullanımı kolay uygulamalar.",
+                "service-4-title": "Performans Optimizasyonu", "service-4-desc": "Daha akıcı dijital deneyimler için hız, kullanılabilirlik ve teknik iyileştirmeler.",
+                "skills-badge": "Teknik Yetkinlikler", "skills-title": "Uygulamalı çalışmalarla gelişen yetenekler.", "skills-desc": "Frontend, backend, veri tabanları, Linux, Python ve siber güvenlik alanlarında dengeli teknik altyapı.",
+                "skill-front": "Frontend Geliştirme", "skill-back": "Backend Geliştirme", "skill-cyber": "Siber Güvenlik ve Sistemler", "tile-code": "Temiz Kod", "tile-db": "Veri Tabanları", "tile-web": "Web Uygulamaları", "tile-host": "Yayınlama",
+                "cyber-kicker": "SİBER GÜVENLİK", "cyber-title": "Siber Güvenlik Sertifikaları ve Uygulamalı Deneyim", "cyber-desc": "Sızma testi, Linux, ağlar, bilgi toplama, zafiyet analizi ve güvenlik laboratuvarlarında uygulamalı deneyim.", "focus-label": "Odak alanı", "focus-value": "Ofansif Güvenlik",
+                "ejpt-status": "Sertifikalı", "ejpt-sub": "Junior Penetration Tester", "ejpt-p1": "Sızma testi temelleri", "ejpt-p2": "Bilgi toplama ve istismar",
+                "thm-sub": "Dünya Sıralamasında İlk %15", "thm-p1": "Uygulamalı güvenlik laboratuvarları", "thm-p2": "Web, Linux ve ağ çalışmaları",
+                "lab-title": "Güvenlik Laboratuvarları", "lab-sub": "Uygulamalı Güvenlik Eğitimi", "lab-p1": "Linux, Python ve güvenlik araçları", "lab-p2": "Ağ ve zafiyet analizi",
+                "footer-badge": "Birlikte Çalışalım", "footer-title": "Aklınızda bir proje var mı?", "footer-desc": "Geliştirmek, iyileştirmek veya güvenli hâle getirmek istediğiniz projeyi anlatın; size net bir sonraki adımla dönüş yapayım.", "footer-btn": "Hemen İletişime Geç", "footer-copy": "Muhammed Yusuf. Tüm hakları saklıdır."
+            },
+            ar: {
+                "nav-name": "محمد", "nav-surname": "يوسف", "nav-about": "عني", "nav-services": "الخدمات", "nav-projects": "المشاريع", "nav-skills": "المهارات", "nav-contact": "تواصل معي",
+                "hero-badge": "متاح لمشاريع جديدة لعام 2026", "hero-name": "محمد يوسف", "hero-title": "مهندس حاسوب ومطور ويب",
+                "hero-desc": "أبني منتجات رقمية آمنة ومتجاوبة تتمحور حول المستخدم من خلال الجمع بين هندسة الحاسوب وتطوير الويب والخبرة العملية في الأمن السيبراني.",
+                "hero-btn-work": "استعرض أعمالي", "hero-btn-talk": "دعنا نتحدث", "profile-role": "الهندسة والتطوير والأمان ضمن معرض أعمال واحد.", "profile-location": "مقيم في تركيا · متاح للمشاريع عن بعد والهجينة", "stat-projects": "مشاريع مكتملة", "stat-ranking": "تصنيف TryHackMe عالميًا",
+                "projects-badge": "أعمال مختارة", "projects-title": "حيث تتحول الأفكار إلى منتجات رقمية مفيدة.", "projects-intro": "مجموعة من مشاريع التعليم والتجارة وتطبيقات الويب التفاعلية المصممة حول الوضوح والأداء واحتياجات المستخدم الحقيقية.",
+                "project-1-title": "منصة الركاز التعليمية", "project-1-desc": "منصة تعليمية متكاملة لإدارة الدورات والمستخدمين والمحتوى والعمليات الإدارية من خلال لوحة تحكم ديناميكية.",
+                "project-2-title": "نظام القائمة الرقمية", "project-2-desc": "تطبيق ويب متجاوب لعرض قوائم المطاعم والعروض والمنتجات ضمن واجهة حديثة.",
+                "project-3-title": "منصة ركاز القرآن", "project-3-desc": "منصة متعددة اللغات لتعليم القرآن والعربية وتشمل الحفظ والتجويد والبرامج المتخصصة.",
+                "project-4-title": "متجر NAZ Parfüm", "project-4-desc": "موقع أنيق لعرض العطور يركز على الهوية البصرية وتقديم المنتجات والتكامل مع وسائل التواصل.",
+                "services-badge": "الخدمات التقنية", "services-title": "خدمات مصممة لتحقيق نتائج عملية.", "services-desc": "حلول رقمية متكاملة من التخطيط والتصميم إلى التطوير والحماية والإطلاق.",
+                "service-1-title": "تطوير مواقع الويب", "service-1-desc": "مواقع احترافية ومتجاوبة وعالية الأداء باستخدام تقنيات حديثة.",
+                "service-2-title": "الأمن السيبراني", "service-2-desc": "مراجعات أمنية وتحليل للثغرات وحلول عملية لحماية المواقع والأنظمة.",
+                "service-3-title": "تطوير التطبيقات", "service-3-desc": "تطبيقات حديثة وسهلة الاستخدام مصممة حسب احتياجات المشروع والمستخدمين.",
+                "service-4-title": "تحسين الأداء", "service-4-desc": "تحسين السرعة وسهولة الاستخدام والجوانب التقنية لتجربة رقمية أكثر سلاسة.",
+                "skills-badge": "القدرات التقنية", "skills-title": "مهارات تنمو من خلال العمل التطبيقي.", "skills-desc": "خلفية تقنية متوازنة في الواجهة الأمامية والخلفية وقواعد البيانات ولينكس وبايثون والأمن السيبراني.",
+                "skill-front": "تطوير الواجهات الأمامية", "skill-back": "تطوير الواجهات الخلفية", "skill-cyber": "الأمن السيبراني والأنظمة", "tile-code": "كود نظيف", "tile-db": "قواعد البيانات", "tile-web": "تطبيقات الويب", "tile-host": "النشر والاستضافة",
+                "cyber-kicker": "الأمن السيبراني", "cyber-title": "شهادات الأمن السيبراني والخبرة العملية", "cyber-desc": "خبرة تطبيقية في اختبار الاختراق ولينكس والشبكات وجمع المعلومات وتحليل الثغرات والمختبرات الأمنية.", "focus-label": "مجال التركيز", "focus-value": "الأمن الهجومي",
+                "ejpt-status": "معتمد", "ejpt-sub": "مختبر اختراق مبتدئ", "ejpt-p1": "أساسيات اختبار الاختراق", "ejpt-p2": "جمع المعلومات والاستغلال",
+                "thm-sub": "ضمن أفضل 15% عالميًا", "thm-p1": "مختبرات أمنية تطبيقية", "thm-p2": "تدريب على الويب ولينكس والشبكات",
+                "lab-title": "المختبرات الأمنية", "lab-sub": "تدريب أمني عملي", "lab-p1": "لينكس وبايثون وأدوات الأمن", "lab-p2": "تحليل الشبكات والثغرات",
+                "footer-badge": "لنعمل معًا", "footer-title": "هل لديك مشروع في ذهنك؟", "footer-desc": "أخبرني بما تريد بناءه أو تطويره أو تأمينه، وسأرد عليك بخطوة تالية واضحة.", "footer-btn": "تواصل معي الآن", "footer-copy": "محمد يوسف. جميع الحقوق محفوظة."
             }
         };
 
-        let currentLang = 'ar';
+        const supportedLanguages = ['en', 'tr', 'ar'];
+        let currentLanguage = 'en';
 
-        function safeCreateIcons() {
-            if (window.lucide && typeof window.lucide.createIcons === 'function') {
-                window.lucide.createIcons();
-            }
+        function createIcons() {
+            if (window.lucide?.createIcons) window.lucide.createIcons();
         }
 
-        function toggleLanguage() {
-            currentLang = currentLang === 'ar' ? 'en' : 'ar';
-            document.documentElement.lang = currentLang;
-            document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
-            document.body.classList.toggle('en', currentLang === 'en');
-            
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (translations[currentLang][key]) {
-                    el.textContent = translations[currentLang][key];
-                }
+        function applyLanguage(language) {
+            currentLanguage = supportedLanguages.includes(language) ? language : 'en';
+            const isArabic = currentLanguage === 'ar';
+            document.documentElement.lang = currentLanguage;
+            document.documentElement.dir = isArabic ? 'rtl' : 'ltr';
+            document.body.classList.toggle('ar', isArabic);
+            document.body.classList.toggle('en', !isArabic);
+
+            document.querySelectorAll('[data-i18n]').forEach((element) => {
+                const key = element.dataset.i18n;
+                const value = translations[currentLanguage]?.[key];
+                if (typeof value === 'string') element.textContent = value;
             });
 
-            const toggleBtn = document.getElementById('lang-toggle');
-            const toggleBtnMobile = document.getElementById('lang-toggle-mobile');
-            if (toggleBtn) toggleBtn.textContent = currentLang === 'ar' ? 'EN' : 'AR';
-            if (toggleBtnMobile) toggleBtnMobile.textContent = currentLang === 'ar' ? 'EN' : 'AR';
-            
-            safeCreateIcons();
+            const desktopSelect = document.getElementById('lang-select');
+            const mobileSelect = document.getElementById('lang-select-mobile');
+            if (desktopSelect) desktopSelect.value = currentLanguage;
+            if (mobileSelect) mobileSelect.value = currentLanguage;
+
+            localStorage.setItem('portfolio-language', currentLanguage);
+            createIcons();
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            safeCreateIcons();
+            const savedLanguage = localStorage.getItem('portfolio-language');
+            applyLanguage(savedLanguage || 'en');
+            createIcons();
+
             const navbar = document.getElementById('navbar');
-            const menuBtn = document.getElementById('menu-btn');
-            const closeBtn = document.getElementById('close-btn');
+            const menuButton = document.getElementById('menu-btn');
+            const closeButton = document.getElementById('close-btn');
             const mobileMenu = document.getElementById('mobile-menu');
             const mobileLinks = document.querySelectorAll('.mobile-nav-link');
-            const sections = document.querySelectorAll('section');
-            const navItems = document.querySelectorAll('.nav-item');
+            const languageSelects = [document.getElementById('lang-select'), document.getElementById('lang-select-mobile')].filter(Boolean);
+            const navLinks = document.querySelectorAll('.nav-item');
+            const sections = document.querySelectorAll('main section[id]');
 
-            // Scroll Handler
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    navbar.classList.add('glass-nav', 'py-4');
-                    navbar.classList.remove('py-6');
-                } else {
-                    navbar.classList.remove('glass-nav', 'py-4');
-                    navbar.classList.add('py-6');
-                }
-                
-                let current = '';
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    if (window.pageYOffset >= sectionTop - 150) {
-                        current = section.getAttribute('id');
-                    }
-                });
+            languageSelects.forEach((select) => select.addEventListener('change', (event) => applyLanguage(event.target.value)));
 
-                navItems.forEach(item => {
-                    item.classList.remove('nav-link-active');
-                    if (item.getAttribute('href').includes(current)) {
-                        item.classList.add('nav-link-active');
-                    }
-                });
-            });
-
-            // Mobile Menu Logic
             const openMenu = () => {
-                mobileMenu.classList.add('open');
+                mobileMenu?.classList.add('open');
+                mobileMenu?.setAttribute('aria-hidden', 'false');
+                menuButton?.setAttribute('aria-expanded', 'true');
                 document.body.classList.add('no-scroll');
+                closeButton?.focus();
             };
 
             const closeMenu = () => {
-                mobileMenu.classList.remove('open');
+                mobileMenu?.classList.remove('open');
+                mobileMenu?.setAttribute('aria-hidden', 'true');
+                menuButton?.setAttribute('aria-expanded', 'false');
                 document.body.classList.remove('no-scroll');
             };
 
-            if (menuBtn) menuBtn.addEventListener('click', openMenu);
-            if (closeBtn) closeBtn.addEventListener('click', closeMenu);
-            mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
-            
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') closeMenu();
-            });
-            
-            // Intersection Observer for Animations
-            const revealObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                        entry.target.querySelectorAll('.progress-bar').forEach(bar => {
-                            bar.style.width = bar.dataset.width;
-                        });
-                    }
-                });
-            }, { threshold: 0.15 });
+            menuButton?.addEventListener('click', openMenu);
+            closeButton?.addEventListener('click', closeMenu);
+            mobileLinks.forEach((link) => link.addEventListener('click', closeMenu));
+            document.addEventListener('keydown', (event) => { if (event.key === 'Escape') closeMenu(); });
 
-            document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+            const updateNavbar = () => {
+                navbar?.classList.toggle('glass-nav', window.scrollY > 30);
+                navbar?.classList.toggle('py-3', window.scrollY > 30);
+                navbar?.classList.toggle('py-5', window.scrollY <= 30);
+            };
+            updateNavbar();
+            window.addEventListener('scroll', updateNavbar, { passive: true });
+
+            const activeSectionObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) return;
+                    navLinks.forEach((link) => link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`));
+                });
+            }, { rootMargin: '-35% 0px -58% 0px', threshold: 0 });
+            sections.forEach((section) => activeSectionObserver.observe(section));
+
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) return;
+                    entry.target.classList.add('active');
+                    entry.target.querySelectorAll('.skill-fill').forEach((bar) => { bar.style.width = bar.dataset.width || '0'; });
+                    observer.unobserve(entry.target);
+                });
+            }, { threshold: 0.12 });
+
+            document.querySelectorAll('.reveal').forEach((element) => revealObserver.observe(element));
         });
     </script>
 </body>
